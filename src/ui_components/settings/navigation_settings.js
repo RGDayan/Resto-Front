@@ -28,16 +28,16 @@ export default function NavigationSettings(){
                                   content={"Ouvrir un service"}/>
                 <NavigationButton className={navButtonClassName}
                                   onclick={() => {
-                                      navigate("/cards")
-                                      dispatch(hideMenu())
-                                  }}
-                                  content={"Cartes"}/>
-                <NavigationButton className={navButtonClassName}
-                                  onclick={() => {
                                       navigate("/products")
                                       dispatch(hideMenu())
                                   }}
                                   content={"Produits"}/>
+                <NavigationButton className={navButtonClassName}
+                                  onclick={() => {
+                                      navigate("/cards")
+                                      dispatch(hideMenu())
+                                  }}
+                                  content={"Cartes"}/>
             </nav>
             <div className={"w-full h-screen bg-stone-500 bg-opacity-50"}
                  onClick={(() => dispatch(hideMenu()))}/>

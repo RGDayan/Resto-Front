@@ -2,7 +2,8 @@ import {createSlice} from "@reduxjs/toolkit";
 
 const initialState = {
     data: null,
-    error: null
+    error: null,
+    isLoading: false
 }
 
 const {actions, reducer} = createSlice({
@@ -17,7 +18,7 @@ const {actions, reducer} = createSlice({
                 draft.error = null
                 draft.data = actions.payload
             }
-        }
+        },
     }
 })
 

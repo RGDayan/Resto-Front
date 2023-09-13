@@ -17,5 +17,8 @@ const {actions, reducer} = createSlice({
     }
 })
 
-export const {showMenu, hideMenu} = actions;
+export const {
+    showMenu,
+    hideMenu
+} = actions;
 export default reducer;

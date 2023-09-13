@@ -3,15 +3,18 @@ import Title from "../divers/labels/title";
 import InputText from "../divers/inputs/input_text";
 import {useDispatch, useSelector} from "react-redux";
 import {selectCard} from "../../redux/selectors";
-import {setCard, setCardPropriete, setTime} from "../../redux/reducers/cardReducer";
-import {useMutation, useQuery} from "react-query";
+import {resetCard, setCardPropriete, setTime} from "../../redux/reducers/cardReducer";
+import {useQuery} from "react-query";
 import InputTextSelect from "../divers/inputs/input_text_select";
 import InputTimePicker from "../divers/inputs/time_picker/input_time_picker";
 import NavigationButton from "../divers/navigations/bouton_navigation";
+import {useNavigate} from "react-router-dom";
+import {getCards} from "../../query/cardQuery";
 
 export default function CreateCard(){
     const card = useSelector(selectCard)
     const dispatch = useDispatch();
+    const navigate = useNavigate();
 
     const {data: types} = useQuery(
         "getCardTypes",
@@ -21,8 +24,6 @@ export default function CreateCard(){
         }
     )
 
-    useMutation()
-
     async function postCard() {
         if (card.title === ""
             || card.type === ""
@@ -31,13 +32,18 @@ export default function CreateCard(){
             return
 
         await fetch(process.env.REACT_APP_URL_API_RESTO + "/cards", {
-            headers: { 'Content-Type': 'application/json' },
             method: "POST",
-            body: JSON.stringify(card)
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                ...card,
+                openingTime: card.openingTime + ":00",
+                closingTime: card.closingTime + ":00",
+            })
         }).then(async (res) => {
             const resultat = await res.json()
-            dispatch(setCard(resultat))
-            return resultat
+            getCards(dispatch)
+            dispatch(resetCard())
+            navigate("/cards/" + resultat.id)
         })
     }
 

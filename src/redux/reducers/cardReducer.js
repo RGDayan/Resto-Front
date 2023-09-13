@@ -12,7 +12,7 @@ const initialState = {
 
 const {actions, reducer} = createSlice({
     name: "card",
-    initialState: initialState,
+    initialState,
     reducers: {
         setCard: (draft, action) => {
             const payload = action.payload
@@ -48,8 +48,6 @@ const {actions, reducer} = createSlice({
             draft.products = null
         },
         setTime: (draft, action) => {
-            console.log(draft[action.payload.propToChange])
-
             switch (action.payload.numeric){
                 case "hour":
                     draft[action.payload.propToChange] = action.payload.value + ":" + draft[action.payload.propToChange].split(":")[1]
@@ -61,7 +59,7 @@ const {actions, reducer} = createSlice({
                     break
             }
 
-            console.log(draft[action.payload.propToChange], action.payload.propToChange)
+            console.log(draft[action.payload.propToChange])
         }
 
     }

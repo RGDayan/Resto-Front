@@ -2,7 +2,7 @@ import React from "react";
 
 export default function LabelErreur({error, solution, className, errorClassName, solutionClassName, imgSrc, imgAlt, imgPosition = "w-full flex justify-center"}){
     return (
-        <div className={"w-fit" + className}>
+        <div className={"w-fit " + className}>
             {
                 imgSrc ?
                     <div className={imgPosition}>

@@ -7,8 +7,6 @@ import {persistor, store} from './redux/store';
 import {PersistGate} from 'redux-persist/integration/react';
 import {QueryClient, QueryClientProvider} from "react-query";
 import Loader from "./ui_components/divers/loaders/loader";
-import {LocalizationProvider} from "@mui/x-date-pickers";
-import {AdapterDayjs} from "@mui/x-date-pickers/AdapterDayjs";
 
 const client = new QueryClient();
 
@@ -17,11 +15,9 @@ ReactDOM.render(
         <Provider store={store}>
             <PersistGate loading={<Loader/>}
                          persistor={persistor}>
-                <LocalizationProvider dateAdapter={AdapterDayjs}>
-                    <BrowserRouter>
-                        <App />
-                    </BrowserRouter>
-                </LocalizationProvider>
+                <BrowserRouter>
+                    <App />
+                </BrowserRouter>
             </PersistGate>
         </Provider>
     </QueryClientProvider>,

@@ -6,6 +6,7 @@ import Service from "./ui_components/services/service";
 import Cards from "./ui_components/cards/cards";
 import HorizontalSeparator from "./ui_components/divers/separators/horizontal_separator";
 import CreateCard from "./ui_components/cards/create_card";
+import ShowCard from "./ui_components/cards/show_card";
 
 function App() {
     return (
@@ -17,7 +18,8 @@ function App() {
                 <Route path={"/service"} element={<Service />}/>
                 <Route path={"/open-service"} element={"ouverture du service"}/>
                 <Route path={"/cards"} element={<Cards />}>
-                    <Route path={"/cards/create-card"} element={<CreateCard />} />
+                    <Route path={"/cards/create"} element={<CreateCard />} />
+                    <Route path={"/cards/:cardId"} element={<ShowCard />} />
                 </Route>
                 <Route path={"/products"} element={"produits"}/>
             </Routes>
