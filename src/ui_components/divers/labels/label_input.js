@@ -1,10 +1,10 @@
 import React from "react";
 
-export default function LabelInput({libelle, name}){
+export default function LabelInput({label, name, className = ""}){
     return (
         <label id={"label-" + name}
-               className={"text-sm"}>
-            {libelle}
+               className={"text-sm " + className}>
+            {label}
         </label>
     )
 }

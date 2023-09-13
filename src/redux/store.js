@@ -3,8 +3,10 @@ import {persistReducer, persistStore} from "redux-persist";
 import storage from 'redux-persist/lib/storage'
 import thunk from "redux-thunk";
 
-import navigationReducer from "./reducers/navigation";
-import serviceReducer from "./reducers/service";
+import navigationReducer from "./reducers/navigationReducer";
+import serviceReducer from "./reducers/serviceReducer";
+import cardsReducer from "./reducers/cardsReducer";
+import cardReducer from "./reducers/cardReducer";
 
 const persistConfig = {
     key : 'root',
@@ -12,6 +14,8 @@ const persistConfig = {
 }
 
 const reducers = combineReducers({
+    card: cardReducer,
+    cards: cardsReducer,
     navigation: navigationReducer,
     service: serviceReducer
 })

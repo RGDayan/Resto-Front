@@ -8,9 +8,9 @@ import user_story64 from "../../resources/user_story/user_story64.png";
 import suggestion_dark16 from "../../resources/suggestion/suggestion_dark16.png";
 import suggestion_dark32 from "../../resources/suggestion/suggestion_dark32.png";
 import suggestion_dark64 from "../../resources/suggestion/suggestion_dark64.png";
-import signalement16 from "../../resources/signalement/signalement16.png";
-import signalement32 from "../../resources/signalement/signalement32.png";
-import signalement64 from "../../resources/signalement/signalement64.png";
+import error16 from "../../resources/error/error16.png";
+import error32 from "../../resources/error/error32.png";
+import error64 from "../../resources/error/error64.png";
 import admin_users16 from "../../resources/admin_users/admin_users16.png";
 import admin_users32 from "../../resources/admin_users/admin_users32.png";
 import admin_users64 from "../../resources/admin_users/admin_users64.png";
@@ -24,6 +24,9 @@ import user96 from "../../resources/user/user96.png";
 import plus_dark16 from "../../resources/plus/plus_dark16.png";
 import plus_dark32 from "../../resources/plus/plus_dark32.png";
 import plus_dark64 from "../../resources/plus/plus_dark64.png";
+import plus_bright16 from "../../resources/plus/plus_bright16.png";
+import plus_bright32 from "../../resources/plus/plus_bright32.png";
+import plus_bright64 from "../../resources/plus/plus_bright64.png";
 import refresh16 from "../../resources/refresh/refresh16.png";
 import refresh32 from "../../resources/refresh/refresh32.png";
 import refresh64 from "../../resources/refresh/refresh64.png";
@@ -65,9 +68,9 @@ const images = {
     suggestion_dark16,
     suggestion_dark32,
     suggestion_dark64,
-    signalement16,
-    signalement32,
-    signalement64,
+    error16,
+    error32,
+    error64,
     admin_users16,
     admin_users32,
     admin_users64,
@@ -81,6 +84,9 @@ const images = {
     plus_dark16,
     plus_dark32,
     plus_dark64,
+    plus_bright16,
+    plus_bright32,
+    plus_bright64,
     refresh16,
     refresh32,
     refresh64,
