@@ -15,7 +15,7 @@ export default function Cards(){
 
     return (
         <div className="flex">
-            <nav className={"bg-white w-fit h-screen text-left min-w-32 max-w-48"}>
+            <nav className={"bg-white w-fit h-screen text-left min-w-48"}>
                 {/*ACCESS TO CARDS CREATION*/}
                 <NavigationButton id={"create-card-button"}
                                   content={"Créer une carte"}
@@ -48,7 +48,7 @@ export default function Cards(){
             <VerticalSeparator verticalMargin={""}/>
 
             {/*CURRENT DISPLAY FOR CARDS (CREATION FORM, SHOW CARD...etc.)*/}
-            <section className={"flex flex-col p-3"}>
+            <section className={"flex flex-col w-full"}>
                 <Outlet />
             </section>
         </div>

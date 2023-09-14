@@ -48,7 +48,7 @@ export default function CreateCard(){
     }
 
     return (
-        <>
+        <div className={"w-fit p-3"}>
             <Title content={"Créez une nouvelle carte"}
                    subTitle={"Les cartes sont la représentation des produits servis pas service"}/>
             <form id={"form-create-card"}
@@ -95,6 +95,6 @@ export default function CreateCard(){
                                   onclick={() => postCard()}/>
 
             </form>
-        </>
+        </div>
     )
 }
