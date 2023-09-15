@@ -16,3 +16,11 @@ export const getCard = (dispatch, id) => {
             dispatch(setCard(resultat))
         })
 }
+
+export const deleteCard = (dispatch, id) => {
+    fetch(process.env.REACT_APP_URL_API_RESTO + "/cards/" + id,
+        {method: "DELETE"})
+        .then(() => {
+            getCards(dispatch)
+        })
+}

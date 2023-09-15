@@ -13,7 +13,7 @@ export default function MenuDeroulant({libelle, name, children, iconeSrc, estSel
                               contenu={libelle}
                               imgSrc={iconeSrc}
                               imgFormat={16}
-                              onclick={() => setSelection((prev) => !prev)}
+                              onClick={() => setSelection((prev) => !prev)}
                               className={selection ? "bg-darkgray-700": ""}
             >
                 <img src={GetImgByFormat("arrow_right", 16)}

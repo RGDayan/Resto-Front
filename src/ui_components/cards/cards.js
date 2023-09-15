@@ -22,26 +22,29 @@ export default function Cards(){
                                   imgSrc={"plus_bright"}
                                   imgFormat={"16"}
                                   className={"p-2"}
-                                  onclick={() => {
+                                  onClick={() => {
                                       dispatch(resetCard())
                                       navigate("/cards/create")
                                   }}/>
 
                 <HorizontalSeparator verticalMargin={cards.error?.status === 404? "mb-3": ""}/>
 
-                {/*CARDS INDEX*/}
-                {
-                    cards.error?.status === 404 ?
-                        <LabelErreur error={cards.error.message}
-                                     errorClassName={"text-center"}
-                                     className={"mx-2"}/>:
-                        cards.data?.map((card) => {
-                            return <NavigationButton key={"card-" + card.id}
-                                                     id={"card-" + card.id}
-                                                     content={card.title}
-                                                     onclick={() => navigate("/cards/" + card.id)} />
-                        })
-                }
+                <div className={"h-full overflow-y-auto"}>
+                    {/*CARDS INDEX*/}
+                    {
+                        cards.error?.status === 404 ?
+                            <LabelErreur error={cards.error.message}
+                                         errorClassName={"text-center"}
+                                         className={"mx-2"}/>:
+                            cards.data?.map((card) => {
+                                return <NavigationButton key={"card-" + card.id}
+                                                         id={"card-" + card.id}
+                                                         content={card.title}
+                                                         onClick={() => navigate("/cards/" + card.id)}
+                                                         className={"px-2"}/>
+                            })
+                    }
+                </div>
 
             </nav>
 

@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import Title from "../divers/labels/title";
 import InputText from "../divers/inputs/input_text";
 import {useDispatch, useSelector} from "react-redux";
@@ -10,11 +10,13 @@ import InputTimePicker from "../divers/inputs/time_picker/input_time_picker";
 import NavigationButton from "../divers/navigations/bouton_navigation";
 import {useNavigate} from "react-router-dom";
 import {getCards} from "../../query/cardQuery";
+import Modal from "../divers/modals/modal";
 
-export default function CreateCard(){
+export default function FormCard({id, title, subTitle = "", method}){
     const card = useSelector(selectCard)
     const dispatch = useDispatch();
     const navigate = useNavigate();
+    const [isModalOpen, setIsModalOpen] = useState(false);
 
     const {data: types} = useQuery(
         "getCardTypes",
@@ -24,20 +26,20 @@ export default function CreateCard(){
         }
     )
 
-    async function postCard() {
+    function postCard() {
         if (card.title === ""
             || card.type === ""
             || card.openingTime === ""
             || card.closingTime === "")
             return
 
-        await fetch(process.env.REACT_APP_URL_API_RESTO + "/cards", {
-            method: "POST",
+        fetch(process.env.REACT_APP_URL_API_RESTO + "/cards", {
+            method: method,
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
                 ...card,
-                openingTime: card.openingTime + ":00",
-                closingTime: card.closingTime + ":00",
+                openingTime: card.openingTime.length === 8 ? card.openingTime: card.openingTime + ":00",
+                closingTime: card.closingTime.length === 8 ? card.closingTime: card.closingTime + ":00",
             })
         }).then(async (res) => {
             const resultat = await res.json()
@@ -49,9 +51,9 @@ export default function CreateCard(){
 
     return (
         <div className={"w-fit p-3"}>
-            <Title content={"Créez une nouvelle carte"}
-                   subTitle={"Les cartes sont la représentation des produits servis pas service"}/>
-            <form id={"form-create-card"}
+            <Title content={title}
+                   subTitle={subTitle}/>
+            <form id={"form-" + id}
                   className={"flex flex-col pt-3"} >
                 <InputText name={"title"}
                            label={"Titre"}
@@ -92,8 +94,19 @@ export default function CreateCard(){
                 <NavigationButton id={"submit-create-card"}
                                   content={"Valider"}
                                   className={"mt-3 w-fit p-3 bg-stone-200 hover:bg-stone-300 active:bg-stone-500 rounded-lg"}
-                                  onclick={() => postCard()}/>
+                                  onClick={() => {
+                                      if (method === "POST")
+                                          postCard()
+                                      else if (method === "PUT")
+                                          setIsModalOpen(true)
+                                  }}/>
 
+                <Modal id={"update-card"}
+                       title={"Modification d'une carte"}
+                       content={"Souhaitez-vous valider la modification de la carte n°" + card.id + " : " + card.title}
+                       isOpen={isModalOpen}
+                       close={() => setIsModalOpen(false)}
+                       onConfirmation={() => postCard()}/>
             </form>
         </div>
     )

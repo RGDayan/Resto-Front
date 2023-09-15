@@ -15,11 +15,11 @@ export default function Settings(){
                 <NavigationButton imgSrc={"home"}
                                   imgFormat={16}
                                   className={"w-fit h-fit p-2 rounded-md m-1"}
-                                  onclick={() => navigate("/service")}/>
+                                  onClick={() => navigate("/service")}/>
                 <NavigationButton imgSrc={"settings"}
                                   imgFormat={16}
                                   className={"w-fit h-fit p-2 rounded-md m-1"}
-                                  onclick={() => dispatch(showMenu())}/>
+                                  onClick={() => dispatch(showMenu())}/>
             </div>
             <NavigationSettings />
         </div>

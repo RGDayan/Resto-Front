@@ -6,10 +6,10 @@ const initialState = {
 }
 
 const {actions, reducer} = createSlice({
-    name: "cards",
+    name: "products",
     initialState,
     reducers: {
-        setCards: (draft, action) => {
+        setProducts: (draft, action) => {
             if (action.payload?.error) {
                 draft.error = action.payload
                 draft.data = null
@@ -17,11 +17,11 @@ const {actions, reducer} = createSlice({
                 draft.error = null
                 draft.data = action.payload
             }
-        },
+        }
     }
 })
 
 export const {
-    setCards
-} = actions;
-export default reducer;
+    setProducts
+} = actions
+export default reducer

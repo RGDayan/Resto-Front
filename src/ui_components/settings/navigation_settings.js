@@ -17,23 +17,23 @@ export default function NavigationSettings(){
         <div className={"flex absolute top-0 h-screen overflow-y-hidden transition-all ease-out duration-300 " + menuWidth}>
             <nav className={"bg-white w-fit h-screen text-left min-w-48"}>
                 <NavigationButton className={navButtonClassName + " p-3"}
-                                  onclick={() => dispatch(hideMenu())}
+                                  onClick={() => dispatch(hideMenu())}
                                   content={"✕ Fermer"}/>
                 <HorizontalSeparator verticalMargin={""}/>
                 <NavigationButton className={navButtonClassName}
-                                  onclick={() => {
+                                  onClick={() => {
                                       navigate("/open-service")
                                       dispatch(hideMenu())
                                   }}
                                   content={"Ouvrir un service"}/>
                 <NavigationButton className={navButtonClassName}
-                                  onclick={() => {
+                                  onClick={() => {
                                       navigate("/products")
                                       dispatch(hideMenu())
                                   }}
                                   content={"Produits"}/>
                 <NavigationButton className={navButtonClassName}
-                                  onclick={() => {
+                                  onClick={() => {
                                       navigate("/cards")
                                       dispatch(hideMenu())
                                   }}

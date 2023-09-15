@@ -36,9 +36,12 @@ import trash16 from "../../resources/trash/trash16.png";
 import pen64 from "../../resources/pen/pen64.png";
 import pen32 from "../../resources/pen/pen32.png";
 import pen16 from "../../resources/pen/pen16.png";
-import back_arrow64 from "../../resources/back_arrow/back_arrow64.png";
-import back_arrow32 from "../../resources/back_arrow/back_arrow32.png";
-import back_arrow16 from "../../resources/back_arrow/back_arrow16.png";
+import back_arrow_bright64 from "../../resources/back_arrow/back_arrow_bright64.png";
+import back_arrow_bright32 from "../../resources/back_arrow/back_arrow_bright32.png";
+import back_arrow_bright16 from "../../resources/back_arrow/back_arrow_bright16.png";
+import back_arrow_dark64 from "../../resources/back_arrow/back_arrow_dark64.png";
+import back_arrow_dark32 from "../../resources/back_arrow/back_arrow_dark32.png";
+import back_arrow_dark16 from "../../resources/back_arrow/back_arrow_dark16.png";
 import forward_arrow64 from "../../resources/forward_arrow/forward_arrow64.png";
 import forward_arrow32 from "../../resources/forward_arrow/forward_arrow32.png";
 import forward_arrow16 from "../../resources/forward_arrow/forward_arrow16.png";
@@ -57,6 +60,18 @@ import home64 from "../../resources/home/home64.png";
 import visualize_dark16 from "../../resources/visualize/visualize_dark16.png";
 import visualize_dark32 from "../../resources/visualize/visualize_dark32.png";
 import visualize_dark64 from "../../resources/visualize/visualize_dark64.png";
+import starters16 from "../../resources/starters/starters16.png";
+import starters32 from "../../resources/starters/starters32.png";
+import starters64 from "../../resources/starters/starters64.png";
+import dishes16 from "../../resources/dishes/dishes16.png";
+import dishes32 from "../../resources/dishes/dishes32.png";
+import dishes64 from "../../resources/dishes/dishes64.png";
+import desserts16 from "../../resources/desserts/desserts16.png";
+import desserts32 from "../../resources/desserts/desserts32.png";
+import desserts64 from "../../resources/desserts/desserts64.png";
+import beverages16 from "../../resources/beverages/beverages16.png";
+import beverages32 from "../../resources/beverages/beverages32.png";
+import beverages64 from "../../resources/beverages/beverages64.png";
 
 const images = {
     project16,
@@ -96,9 +111,12 @@ const images = {
     pen64,
     pen32,
     pen16,
-    back_arrow64,
-    back_arrow32,
-    back_arrow16,
+    back_arrow_dark64,
+    back_arrow_dark32,
+    back_arrow_dark16,
+    back_arrow_bright64,
+    back_arrow_bright32,
+    back_arrow_bright16,
     forward_arrow64,
     forward_arrow32,
     forward_arrow16,
@@ -116,7 +134,19 @@ const images = {
     home64,
     visualize_dark16,
     visualize_dark32,
-    visualize_dark64
+    visualize_dark64,
+    starters16,
+    starters32,
+    starters64,
+    dishes16,
+    dishes32,
+    dishes64,
+    desserts16,
+    desserts32,
+    desserts64,
+    beverages16,
+    beverages32,
+    beverages64,
 };
 
 /**
