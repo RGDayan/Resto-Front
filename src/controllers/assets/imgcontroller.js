@@ -161,9 +161,9 @@ export default function GetImgByFormat(imgName, format){
 }
 
 /**
- * Récupération de l'image au format correspondant à la taille de la fenêtre (exemple avec le Logo)
+ * Récupération de l'image au formatters correspondant à la taille de la fenêtre (exemple avec le Logo)
  * @param imgName String : nom de l'image
- * @param formatByDefault Int : format à retourner par défaut (si vide, retourne l'image sans format prédéfini)
+ * @param formatByDefault Int : formatters à retourner par défaut (si vide, retourne l'image sans formatters prédéfini)
  * @returns {*} String : chemin menant à l'image.
  */
 export function GetImgByWindowSize(imgName, formatByDefault){

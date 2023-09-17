@@ -17,7 +17,11 @@ export default function Modal({isOpen, close, onConfirmation, id, title, content
 
             <div className={"relative self-center h-fit w-fit p-6 px-10 bg-white rounded-lg space-y-3"}>
                 <div className={" flex space-x-3"}>
-                    <img src={imgSrc} alt={imgAlt}/>
+                    {
+                        imgSrc?
+                            <img src={imgSrc} alt={imgAlt}/>
+                            :""
+                    }
                     <Title content={title} underline={false} className={"self-center"}/>
                     <NavigationButton id={"close-modal-" + id}
                                       content={"✕"}

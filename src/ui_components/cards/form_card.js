@@ -3,14 +3,14 @@ import Title from "../divers/labels/title";
 import InputText from "../divers/inputs/input_text";
 import {useDispatch, useSelector} from "react-redux";
 import {selectCard} from "../../redux/selectors";
-import {resetCard, setCardPropriete, setTime} from "../../redux/reducers/cardReducer";
+import {resetCard, setCardPropriete} from "../../redux/reducers/cardReducer";
 import {useQuery} from "react-query";
 import InputTextSelect from "../divers/inputs/input_text_select";
-import InputTimePicker from "../divers/inputs/time_picker/input_time_picker";
 import NavigationButton from "../divers/navigations/bouton_navigation";
 import {useNavigate} from "react-router-dom";
 import {getCards} from "../../query/cardQuery";
 import Modal from "../divers/modals/modal";
+import InputTime from "../divers/inputs/input_time";
 
 export default function FormCard({id, title, subTitle = "", method}){
     const card = useSelector(selectCard)
@@ -26,7 +26,7 @@ export default function FormCard({id, title, subTitle = "", method}){
         }
     )
 
-    function postCard() {
+    function submitCard() {
         if (card.title === ""
             || card.type === ""
             || card.openingTime === ""
@@ -65,38 +65,22 @@ export default function FormCard({id, title, subTitle = "", method}){
                                  values={types}
                                  onChange={(e) => dispatch(setCardPropriete(e))}
                                  className={"mb-3"}/>
-                <InputTimePicker name={"openingTime"}
-                                 label={"Heure d'ouverture prévue"}
-                                 defaultValue={card.openingTime}
-                                 onChange={(e) => {
-                                     dispatch(setTime(
-                                         {
-                                             numeric: e.target.name,
-                                             value: e.target.value,
-                                             propToChange: "openingTime"
-                                         }
-                                     ))
-                                 }}/>
+                <InputTime name={"openingTime"}
+                           label={"Heure d'ouverture prévue"}
+                           value={card.openingTime}
+                           onChange={(e) => {dispatch(setCardPropriete(e))}}/>
                 <div className="m-2"></div>
-                <InputTimePicker name={"closingTime"}
-                                 label={"Heure de fermeture prévue"}
-                                 defaultValue={card.closingTime}
-                                 onChange={(e) => {
-                                     dispatch(setTime(
-                                         {
-                                             numeric: e.target.name,
-                                             value: e.target.value,
-                                             propToChange: "closingTime"
-                                         }
-                                     ))
-                                 }}/>
+                <InputTime name={"closingTime"}
+                           label={"Heure de fermeture prévue"}
+                           value={card.closingTime}
+                           onChange={(e) => {dispatch(setCardPropriete(e))}}/>
 
-                <NavigationButton id={"submit-create-card"}
+                <NavigationButton id={"submit-" + id + "-card"}
                                   content={"Valider"}
                                   className={"mt-3 w-fit p-3 bg-stone-200 hover:bg-stone-300 active:bg-stone-500 rounded-lg"}
                                   onClick={() => {
                                       if (method === "POST")
-                                          postCard()
+                                          submitCard()
                                       else if (method === "PUT")
                                           setIsModalOpen(true)
                                   }}/>
@@ -106,7 +90,7 @@ export default function FormCard({id, title, subTitle = "", method}){
                        content={"Souhaitez-vous valider la modification de la carte n°" + card.id + " : " + card.title}
                        isOpen={isModalOpen}
                        close={() => setIsModalOpen(false)}
-                       onConfirmation={() => postCard()}/>
+                       onConfirmation={() => submitCard()}/>
             </form>
         </div>
     )

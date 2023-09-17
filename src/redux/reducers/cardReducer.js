@@ -1,4 +1,5 @@
 import {createSlice} from "@reduxjs/toolkit";
+import {preparePropertyAction} from "../../controllers/formatters/reduxFormatter";
 
 const initialState = {
     id: null,
@@ -26,10 +27,7 @@ const {actions, reducer} = createSlice({
         },
         setCardPropriete: {
             prepare: (e) => ({
-                payload: {
-                    name: e.target.name,
-                    value: e.target.value
-                }
+                payload: preparePropertyAction(e)
             }),
             reducer: (draft, action) => {
                 if (action.payload.value !== draft[action.payload.name]) {
@@ -46,29 +44,13 @@ const {actions, reducer} = createSlice({
             draft.closingTime = "15:00"
             draft.services = null
             draft.products = null
-        },
-        setTime: (draft, action) => {
-            switch (action.payload.numeric){
-                case "hour":
-                    draft[action.payload.propToChange] = action.payload.value + ":" + draft[action.payload.propToChange].split(":")[1]
-                    break
-                case "minute":
-                    draft[action.payload.propToChange] = draft[action.payload.propToChange].split(":")[0] + ":" + action.payload.value
-                    break
-                default:
-                    break
-            }
-
-            console.log(draft[action.payload.propToChange])
         }
-
     }
 })
 
 export const {
     setCard,
     setCardPropriete,
-    resetCard,
-    setTime
+    resetCard
 } = actions
 export default reducer

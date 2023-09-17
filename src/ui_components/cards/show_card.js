@@ -27,16 +27,16 @@ export default function ShowCard(){
                 <Title content={"Carte n°" + card.id + " : " + card.title}/>
                 <div className="p-3 space-y-3">
                     <div>
-                        <LabelInput name={"type"} label={"Type"} className={"font-bold"}/>
+                        <LabelInput name={"type"} label={"Type"} />
                         <p>{card.type}</p>
                     </div>
                     <div>
-                        <LabelInput name={"openingTime"} label={"Heure d'ouverture"} className={"font-bold"}/>
-                        <p>{card?.openingTime.substring(0, 5)}</p>
+                        <LabelInput name={"openingTime"} label={"Heure d'ouverture"} />
+                        <p>{card?.openingTime?.substring(0, 5)}</p>
                     </div>
                     <div>
-                        <LabelInput name={"closingTime"} label={"Heure de fermeture"} className={"font-bold"}/>
-                        <p>{card?.closingTime.substring(0, 5)}</p>
+                        <LabelInput name={"closingTime"} label={"Heure de fermeture"} />
+                        <p>{card?.closingTime?.substring(0, 5)}</p>
                     </div>
                 </div>
             </div>
