@@ -10,7 +10,7 @@ export default function NavigationButton({id, onClick, content, imgSrc = "", img
                 "hover:bg-stone-100 active:bg-stone-300 transition-all duration-200 active:text-white " +
                 className}
             onClick={onClick}>
-            <div className={"flex " + contentClassName}>
+            <div className={"flex w-full " + contentClassName}>
                 {
                     imgSrc !== ""?
                         <img src={GetImgByFormat(imgSrc, imgFormat)}
@@ -18,7 +18,7 @@ export default function NavigationButton({id, onClick, content, imgSrc = "", img
                              className={"h-fit w-fit p-1 self-center"}/>
                         :""
                 }
-                <p className={"self-center"}>{content}</p>
+                {content}
             </div>
             {children}
         </div>

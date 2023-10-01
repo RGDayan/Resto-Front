@@ -7,7 +7,7 @@ import {getProducts} from "../../query/productQuery";
 import {useNavigate} from "react-router-dom";
 import InputText from "../divers/inputs/input_text";
 import InputNumber from "../divers/inputs/input_number";
-import NavigationButton from "../divers/navigations/bouton_navigation";
+import NavigationButton from "../divers/navigations/navigation_button";
 import Modal from "../divers/modals/modal";
 import InputCheckbox from "../divers/inputs/input_checkbox";
 import InputTextSelect from "../divers/inputs/input_text_select";
@@ -24,7 +24,7 @@ export default function FormProduct({id, category, title, subTitle, method}){
         if (category === "beverages")
             fetch(process.env.REACT_APP_URL_API_RESTO + "/products/beverages/types")
                 .then(async (res) => setTypeBeverages(await res.json()))
-    }, []);
+    }, [category]);
 
     function submitProduct(){
         if (productProduct.label === "" ||

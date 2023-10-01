@@ -6,7 +6,7 @@ import {selectCard} from "../../redux/selectors";
 import {resetCard, setCardPropriete} from "../../redux/reducers/cardReducer";
 import {useQuery} from "react-query";
 import InputTextSelect from "../divers/inputs/input_text_select";
-import NavigationButton from "../divers/navigations/bouton_navigation";
+import NavigationButton from "../divers/navigations/navigation_button";
 import {useNavigate} from "react-router-dom";
 import {getCards} from "../../query/cardQuery";
 import Modal from "../divers/modals/modal";

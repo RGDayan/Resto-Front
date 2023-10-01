@@ -1,5 +1,5 @@
 import React from "react";
-import NavigationButton from "../divers/navigations/bouton_navigation";
+import NavigationButton from "../divers/navigations/navigation_button";
 import {useNavigate} from "react-router-dom";
 
 export default function CategorieProducts(){

@@ -55,12 +55,13 @@ const {actions, reducer} = createSlice({
                 payload: preparePropertyAction(e, 2)
             }),
             reducer: (draft, action) => {
-                if (action.payload.value === ""
-                    && action.payload.name === "price"
-                    && !draft.product.price.includes("."))
-                    draft.product.price = draft.product.price + ".00"
-                else if (action.payload.value !== draft.product[action.payload.name])
-                    draft.product[action.payload.name] = action.payload.value
+                const name = action.payload.name
+                const value = action.payload.value
+
+                if (value === "" && name === "price" && !draft.product[name].toString().includes("."))
+                    draft.product[name] = draft.product[name] + ".00"
+                else if (value !== draft.product[name])
+                    draft.product[name] = value
             }
         },
         setProductProperty: {
@@ -68,12 +69,13 @@ const {actions, reducer} = createSlice({
                 payload: preparePropertyAction(e, 1)
             }),
             reducer: (draft, action) => {
-                if (action.payload.value !== draft[action.payload.name])
-                    draft[action.payload.name] = action.payload.value
-                if (action.payload.value === ""
-                    && action.payload.name === "degree"
-                    && !draft.product.price.includes("."))
-                    draft.product.price = draft.product.price + ".0"
+                const name = action.payload.name
+                const value = action.payload.value
+
+                if (value === "" && name === "degree" && !draft[name].toString().includes("."))
+                    draft[name] = draft[name] + ".0"
+                else if (value !== draft[name])
+                    draft[name] = value
             }
         },
     }

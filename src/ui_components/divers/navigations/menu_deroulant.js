@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import BoutonNavigation from "./bouton_navigation";
+import BoutonNavigation from "./navigation_button";
 import GetImgByFormat from "../../../controllers/assets/imgcontroller";
 
 export default function MenuDeroulant({libelle, name, children, iconeSrc, estSelection = false}) {

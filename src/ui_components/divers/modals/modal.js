@@ -1,6 +1,6 @@
 import ReactDOM from "react-dom";
 import Title from "../labels/title";
-import NavigationButton from "../navigations/bouton_navigation";
+import NavigationButton from "../navigations/navigation_button";
 import HorizontalSeparator from "../separators/horizontal_separator";
 
 export default function Modal({isOpen, close, onConfirmation, id, title, content, imgSrc, imgAlt}){

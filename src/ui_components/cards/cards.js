@@ -2,7 +2,7 @@ import React from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {selectCards} from "../../redux/selectors";
 import VerticalSeparator from "../divers/separators/vertical_separator";
-import NavigationButton from "../divers/navigations/bouton_navigation";
+import NavigationButton from "../divers/navigations/navigation_button";
 import LabelErreur from "../divers/label_erreur";
 import HorizontalSeparator from "../divers/separators/horizontal_separator";
 import {Outlet, useNavigate} from "react-router-dom";

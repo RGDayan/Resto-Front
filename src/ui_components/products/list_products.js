@@ -1,5 +1,5 @@
 import React from "react";
-import NavigationButton from "../divers/navigations/bouton_navigation";
+import NavigationButton from "../divers/navigations/navigation_button";
 import {useSelector} from "react-redux";
 import {selectProducts} from "../../redux/selectors";
 import LabelErreur from "../divers/label_erreur";
@@ -11,7 +11,7 @@ export default function ListProducts({category}){
     const navigate = useNavigate()
 
     return (
-        <div className={"flex flex-wrap w-full h-full p-6"}>
+        <div className={"flex flex-wrap justify-evenly w-full h-full p-6"}>
             {
                 products.error?.status === 404 ?
                     <LabelErreur error={products.error?.message}
@@ -25,6 +25,8 @@ export default function ListProducts({category}){
                         return <NavigationButton key={product.id}
                                                  id={"show-product-" + product.id}
                                                  content={product.product.label}
+                                                 className={"min-w-48 mb-3 p-3 shadow-lg shadow-stone-200 active:shadow-inner"}
+                                                 contentClassName={"justify-center"}
                                                  onClick={() => navigate("/products/" + category + "/" + product.id)}
                         />
                     })

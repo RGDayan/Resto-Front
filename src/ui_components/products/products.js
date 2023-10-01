@@ -10,12 +10,11 @@ export default function Products({category}){
 
     useEffect(() => {
         getProducts(dispatch, category)
-    }, []);
+    }, [dispatch, category]);
 
     return (
         <div>
-            <NavigationProducts id={category}
-                                url={"/products/" + category + "/create"}
+            <NavigationProducts category={category}
                                 onPlusClick={() => dispatch(resetProduct())} />
             <section>
                 <Outlet />

@@ -1,5 +1,5 @@
 import React from "react";
-import NavigationButton from "../divers/navigations/bouton_navigation";
+import NavigationButton from "../divers/navigations/navigation_button";
 import {hideMenu} from "../../redux/reducers/navigationReducer";
 import {useDispatch, useSelector} from "react-redux";
 import {selectMenuVisibility} from "../../redux/selectors";

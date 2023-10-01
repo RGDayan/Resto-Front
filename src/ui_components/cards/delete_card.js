@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import NavigationButton from "../divers/navigations/bouton_navigation";
+import NavigationButton from "../divers/navigations/navigation_button";
 import Modal from "../divers/modals/modal";
 import GetImgByFormat from "../../controllers/assets/imgcontroller";
 import {deleteCard} from "../../query/cardQuery";

@@ -2,3 +2,21 @@
 @tailwind components;
 @tailwind utilities;
 
+td{
+    @apply p-1 pl-2;
+}
+tbody tr:nth-child(even){
+    @apply bg-stone-50;
+}
+tbody tr:nth-child(odd){
+    @apply bg-stone-100;
+}
+tbody > td{
+    @apply font-semibold bg-stone-300 text-center;
+}
+thead{
+    @apply font-semibold bg-stone-300;
+}
+table{
+    @apply text-sm;
+}

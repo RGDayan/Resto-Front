@@ -1,5 +1,5 @@
 import React from "react";
-import NavigationButton from "../divers/navigations/bouton_navigation";
+import NavigationButton from "../divers/navigations/navigation_button";
 import {useDispatch} from "react-redux";
 import {showMenu} from "../../redux/reducers/navigationReducer";
 import NavigationSettings from "./navigation_settings";
