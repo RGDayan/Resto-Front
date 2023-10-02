@@ -1,42 +1,41 @@
 import React, {useEffect} from "react";
 import {useParams} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
-import {selectProduct, selectProductProduct} from "../../redux/selectors";
+import {selectProduct} from "../../redux/selectors";
 import {getProduct} from "../../query/productQuery";
 import Title from "../divers/labels/title";
 import LabelInput from "../divers/labels/label_input";
 
 export default function ShowProduct({category}){
     const product = useSelector(selectProduct)
-    const productProduct = useSelector(selectProductProduct)
     const dispatch = useDispatch()
     const { idProduct } = useParams()
 
     useEffect(() => {
         getProduct(dispatch, category, idProduct)
-    }, [dispatch, idProduct])
+    }, [dispatch, idProduct, category])
 
     return (
         <div className={"p-3 w-1/2"}>
-            <Title content={"Produit n°" + product.id + " : " + productProduct.label} />
+            <Title content={"Produit n°" + product.id + " : " + product.label} />
 
             <div className={"space-y-3"}>
                 <div>
                     <LabelInput name={"description"} label={"Description"} />
-                    <p>{productProduct.description}</p>
+                    <p>{product.description}</p>
                 </div>
                 <div>
                     <LabelInput name={"price"} label={"Prix"} />
-                    <p>{productProduct.price}</p>
+                    <p>{product.price}</p>
                 </div>
 
                 {
-                    category === "starters" ?
+                    category === "starter" ?
                         <div>
                             <LabelInput name={"isHot"} label={"Entrée chaude"} />
                             <p>{product.isHot? "Oui": "Non"}</p>
                         </div>
-                    :  category === "desserts" ?
+                    :  category === "dessert" ?
                         <>
                             <div>
                                 <LabelInput name={"isHot"} label={"Dessert chaud"} />
@@ -47,7 +46,7 @@ export default function ShowProduct({category}){
                                 <p>{product.isFlambe? "Oui": "Non"}</p>
                             </div>
                         </>
-                    : category === "beverages" ?
+                    : category === "beverage" ?
                         <>
                             <div>
                                 <LabelInput name={"degree"} label={"Degré d'alcool"} />

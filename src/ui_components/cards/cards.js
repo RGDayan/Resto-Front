@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {selectCards} from "../../redux/selectors";
 import VerticalSeparator from "../divers/separators/vertical_separator";
@@ -7,11 +7,16 @@ import LabelErreur from "../divers/label_erreur";
 import HorizontalSeparator from "../divers/separators/horizontal_separator";
 import {Outlet, useNavigate} from "react-router-dom";
 import {resetCard} from "../../redux/reducers/cardReducer";
+import {getCards} from "../../query/cardQuery";
 
 export default function Cards(){
     const cards = useSelector(selectCards);
     const dispatch = useDispatch();
     const navigate = useNavigate();
+
+    useEffect(() => {
+        getCards(dispatch)
+    }, [dispatch]);
 
     return (
         <div className="flex">

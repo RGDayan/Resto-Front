@@ -4,11 +4,11 @@ import {useNavigate, useParams} from "react-router-dom";
 import Modal from "../divers/modals/modal";
 import GetImgByFormat from "../../controllers/assets/imgcontroller";
 import {useDispatch, useSelector} from "react-redux";
-import {selectProductProduct} from "../../redux/selectors";
 import {deleteProduct} from "../../query/productQuery";
+import {selectProduct} from "../../redux/selectors";
 
 export default function NavigationProducts({category, onPlusClick}){
-    const product = useSelector(selectProductProduct)
+    const product = useSelector(selectProduct)
     const dispatch = useDispatch()
     const [isModalOpen, setIsModalOpen] = useState(false)
     const { idProduct } = useParams()

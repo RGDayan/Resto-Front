@@ -24,7 +24,7 @@ export default function ShowCard(){
 
             <HorizontalSeparator horizontalMargin={""} verticalMargin={""}/>
 
-            <div className={"flex w-full"}>
+            <div className={"flex flex-col w-full"}>
                 <div className={"w-1/2 p-3 pr-10"}>
                     <Title content={"Carte n°" + card.id + " : " + card.title}/>
                     <div className="p-3 space-y-3">

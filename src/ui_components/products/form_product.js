@@ -1,8 +1,8 @@
 import React, {useEffect, useState} from "react";
 import Title from "../divers/labels/title";
 import {useDispatch, useSelector} from "react-redux";
-import {selectProduct, selectProductProduct} from "../../redux/selectors";
-import {resetProduct, setProductProductProperty, setProductProperty} from "../../redux/reducers/productReducer";
+import {selectProduct} from "../../redux/selectors";
+import {resetProduct, setProductProperty} from "../../redux/reducers/productReducer";
 import {getProducts} from "../../query/productQuery";
 import {useNavigate} from "react-router-dom";
 import InputText from "../divers/inputs/input_text";
@@ -14,29 +14,28 @@ import InputTextSelect from "../divers/inputs/input_text_select";
 
 export default function FormProduct({id, category, title, subTitle, method}){
     const product = useSelector(selectProduct)
-    const productProduct = useSelector(selectProductProduct)
     const dispatch = useDispatch()
     const navigate = useNavigate()
     const [isModalOpen, setIsModalOpen] = useState(false)
     const [typeBeverages, setTypeBeverages] = useState([]);
 
     useEffect(() => {
-        if (category === "beverages")
-            fetch(process.env.REACT_APP_URL_API_RESTO + "/products/beverages/types")
+        if (category === "beverage")
+            fetch(process.env.REACT_APP_URL_API_RESTO + "/products/beverage/types")
                 .then(async (res) => setTypeBeverages(await res.json()))
     }, [category]);
 
     function submitProduct(){
-        if (productProduct.label === "" ||
-            productProduct.description === "" ||
-            productProduct.price === "")
+        if (product.label === "" ||
+            product.description === "" ||
+            product.price === "")
             return
 
-        if (category === "starters" && product.isHot === null)
+        if (category === "starter" && product.isHot === null)
             return;
-        if (category === "desserts" && product.isHot === null && product.isFlambe === null)
+        if (category === "dessert" && product.isHot === null && product.isFlambe === null)
             return;
-        if (category === "beverages"
+        if (category === "beverage"
             && (product.degree === null || product.degree === "")
             && product.type === "" )
             return;
@@ -63,24 +62,24 @@ export default function FormProduct({id, category, title, subTitle, method}){
 
             <InputText label={"Nom du produit"}
                        name={"label"}
-                       value={productProduct.label}
-                       onChange={(e) => dispatch(setProductProductProperty(e))} />
+                       value={product.label}
+                       onChange={(e) => dispatch(setProductProperty(e))} />
             <InputText label={"Description"}
                        name={"description"}
-                       value={productProduct.description}
-                       onChange={(e) => dispatch(setProductProductProperty(e))} />
+                       value={product.description}
+                       onChange={(e) => dispatch(setProductProperty(e))} />
             <InputNumber label={"Prix"}
                          name={"price"}
-                         value={productProduct.price}
-                         onChange={(e) => dispatch(setProductProductProperty(e))} />
+                         value={product.price}
+                         onChange={(e) => dispatch(setProductProperty(e))} />
 
             {
-                category === "starters" ?
+                category === "starter" ?
                     <InputCheckbox label={"Entrée chaude"}
                                    name={"isHot"}
                                    value={product.isHot}
                                    onChange={(e) => dispatch(setProductProperty(e))} />
-                : category === "desserts" ?
+                : category === "dessert" ?
                     <>
                         <InputCheckbox label={"Dessert chaud"}
                                        name={"isHot"}
@@ -91,7 +90,7 @@ export default function FormProduct({id, category, title, subTitle, method}){
                                        value={product.isFlambe}
                                        onChange={(e) => dispatch(setProductProperty(e))} />
                     </>
-                : category === "beverages" ?
+                : category === "beverage" ?
                     <>
                         <InputNumber label={"Degré d'alcool"}
                                      name={"degree"}
@@ -118,7 +117,7 @@ export default function FormProduct({id, category, title, subTitle, method}){
 
             <Modal id={"update-product"}
                    title={"Modification d'un produit"}
-                   content={"Souhaitez-vous valider la modification du produit n°" + product.id + " : " + productProduct.label}
+                   content={"Souhaitez-vous valider la modification du produit n°" + product.id + " : " + product.label}
                    isOpen={isModalOpen}
                    close={() => setIsModalOpen(false)}
                    onConfirmation={() => submitProduct()}/>

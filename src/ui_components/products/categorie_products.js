@@ -17,7 +17,7 @@ export default function CategorieProducts(){
                               imgSrc={"starters"}
                               imgFormat={32}
                               alt={"starters_ico"}
-                              onClick={() => navigate("/products/starters")}/>
+                              onClick={() => navigate("/products/starter")}/>
             <NavigationButton id={"dishes"}
                               content={"Plats"}
                               className={buttonClassName}
@@ -25,10 +25,10 @@ export default function CategorieProducts(){
                               imgSrc={"dishes"}
                               imgFormat={32}
                               alt={"dishes_ico"}
-                              onClick={() => navigate("/products/dishes")}/>
+                              onClick={() => navigate("/products/dish")}/>
             <NavigationButton id={"desserts"}
                               content={"Desserts"}
-                              onClick={() => navigate("/products/desserts")}
+                              onClick={() => navigate("/products/dessert")}
                               className={buttonClassName}
                               imgSrc={"desserts"}
                               imgFormat={32}
@@ -36,7 +36,7 @@ export default function CategorieProducts(){
                               contentClassName={contentClassName} />
             <NavigationButton id={"beverages"}
                               content={"Boissons"}
-                              onClick={() => navigate("/products/beverages")}
+                              onClick={() => navigate("/products/beverage")}
                               className={buttonClassName}
                               imgSrc={"beverages"}
                               imgFormat={32}

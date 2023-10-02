@@ -30,10 +30,8 @@ const {actions, reducer} = createSlice({
                 payload: preparePropertyAction(e)
             }),
             reducer: (draft, action) => {
-                if (action.payload.value !== draft[action.payload.name]) {
+                if (action.payload.value !== draft[action.payload.name])
                     draft[action.payload.name] = action.payload.value
-                    console.log(draft[action.payload.name])
-                }
             }
         },
         resetCard: (draft) => {

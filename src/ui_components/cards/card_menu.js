@@ -18,7 +18,16 @@ export default function CardMenu(){
                               alt={"update_ico"}
                               className={"rounded-lg"}
                               onClick={() => navigate("/cards/" + card.id + "/update")}/>
+
+            <NavigationButton id={"add-card-product-button"}
+                              imgSrc={"desserts"}
+                              imgFormat={16}
+                              alt={"add_product_ico"}
+                              className={"rounded-lg"}
+                              onClick={() => navigate("/cards/" + card.id + "/add-products")}/>
             <DeleteCard />
+
+
         </div>
     )
 }

@@ -13,7 +13,7 @@ export default function ListProducts({category}){
     return (
         <div className={"flex flex-wrap justify-evenly w-full h-full p-6"}>
             {
-                products.error?.status === 404 ?
+                products.error?.status === 404?
                     <LabelErreur error={products.error?.message}
                                  solution={"Veuillez créer un produit de cette catégorie"}
                                  className={"w-full text-center mt-3"}
@@ -24,7 +24,7 @@ export default function ListProducts({category}){
                     : products.data?.map((product) => {
                         return <NavigationButton key={product.id}
                                                  id={"show-product-" + product.id}
-                                                 content={product.product.label}
+                                                 content={product.label}
                                                  className={"min-w-48 mb-3 p-3 shadow-lg shadow-stone-200 active:shadow-inner"}
                                                  contentClassName={"justify-center"}
                                                  onClick={() => navigate("/products/" + category + "/" + product.id)}

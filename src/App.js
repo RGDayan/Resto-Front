@@ -12,6 +12,7 @@ import Products from "./ui_components/products/products";
 import ListProducts from "./ui_components/products/list_products";
 import FormProduct from "./ui_components/products/form_product";
 import ShowProduct from "./ui_components/products/show_product";
+import FormCardProducts from "./ui_components/cards/relations/form_card_products";
 
 function App() {
     return (
@@ -25,72 +26,72 @@ function App() {
 
                 {/*STARTERS ROUTES*/}
                 <Route path={"/products"} element={<CategorieProducts />}/>
-                <Route path={"/products/starters"} element={<Products category={"starters"}/>}>
-                    <Route path={"/products/starters"} element={<ListProducts category={"starters"} />}/>
-                    <Route path={"/products/starters/create"}
+                <Route path={"/products/starter"} element={<Products category={"starter"}/>}>
+                    <Route path={"/products/starter"} element={<ListProducts category={"starter"} />}/>
+                    <Route path={"/products/starter/create"}
                            element={<FormProduct id={"create-starter"}
-                                                 category={"starters"}
+                                                 category={"starter"}
                                                  title={"Ajoutez une nouvelle entrée"}
                                                  subTitle={"Les entrées seront affichées dans la catégorie des produits correspondants"}
                                                  method={"POST"} />}/>
-                    <Route path={"/products/starters/:idProduct"} element={<ShowProduct category={"starters"}/>}/>
-                    <Route path={"/products/starters/:idProduct/update"}
+                    <Route path={"/products/starter/:idProduct"} element={<ShowProduct category={"starter"}/>}/>
+                    <Route path={"/products/starter/:idProduct/update"}
                            element={<FormProduct id={"update-starter"}
-                                                 category={"starters"}
+                                                 category={"starter"}
                                                  title={"Modifiez une entrée"}
                                                  method={"PUT"}/>}/>
                 </Route>
 
                 {/*DISHES ROUTES*/}
                 <Route path={"/products"} element={<CategorieProducts />}/>
-                <Route path={"/products/dishes"} element={<Products category={"dishes"}/>}>
-                    <Route path={"/products/dishes"} element={<ListProducts category={"dishes"} />}/>
-                    <Route path={"/products/dishes/create"}
+                <Route path={"/products/dish"} element={<Products category={"dish"}/>}>
+                    <Route path={"/products/dish"} element={<ListProducts category={"dish"} />}/>
+                    <Route path={"/products/dish/create"}
                            element={<FormProduct id={"create-dish"}
-                                                 category={"dishes"}
+                                                 category={"dish"}
                                                  title={"Ajoutez un nouveau plat"}
                                                  subTitle={"Les plats seront affichées dans la catégorie des produits correspondants"}
                                                  method={"POST"} />}/>
-                    <Route path={"/products/dishes/:idProduct"} element={<ShowProduct category={"dishes"}/>}/>
-                    <Route path={"/products/dishes/:idProduct/update"}
+                    <Route path={"/products/dish/:idProduct"} element={<ShowProduct category={"dish"}/>}/>
+                    <Route path={"/products/dish/:idProduct/update"}
                            element={<FormProduct id={"update-dish"}
-                                                 category={"dishes"}
+                                                 category={"dish"}
                                                  title={"Modifiez un plat"}
                                                  method={"PUT"}/>}/>
                 </Route>
 
                 {/*DESSERTS ROUTES*/}
                 <Route path={"/products"} element={<CategorieProducts />}/>
-                <Route path={"/products/desserts"} element={<Products category={"desserts"}/>}>
-                    <Route path={"/products/desserts"} element={<ListProducts category={"desserts"} />}/>
-                    <Route path={"/products/desserts/create"}
+                <Route path={"/products/dessert"} element={<Products category={"dessert"}/>}>
+                    <Route path={"/products/dessert"} element={<ListProducts category={"dessert"} />}/>
+                    <Route path={"/products/dessert/create"}
                            element={<FormProduct id={"create-dessert"}
-                                                 category={"desserts"}
+                                                 category={"dessert"}
                                                  title={"Ajoutez un nouveau dessert"}
                                                  subTitle={"Les desserts seront affichées dans la catégorie des produits correspondants"}
                                                  method={"POST"} />}/>
-                    <Route path={"/products/desserts/:idProduct"} element={<ShowProduct category={"desserts"}/>}/>
-                    <Route path={"/products/desserts/:idProduct/update"}
+                    <Route path={"/products/dessert/:idProduct"} element={<ShowProduct category={"dessert"}/>}/>
+                    <Route path={"/products/dessert/:idProduct/update"}
                            element={<FormProduct id={"update-dessert"}
-                                                 category={"desserts"}
+                                                 category={"dessert"}
                                                  title={"Modifiez un dessert"}
                                                  method={"PUT"}/>}/>
                 </Route>
 
                 {/*BEVERAGES ROUTES*/}
                 <Route path={"/products"} element={<CategorieProducts />}/>
-                <Route path={"/products/beverages"} element={<Products category={"beverages"}/>}>
-                    <Route path={"/products/beverages"} element={<ListProducts category={"beverages"} />}/>
-                    <Route path={"/products/beverages/create"}
+                <Route path={"/products/beverage"} element={<Products category={"beverage"}/>}>
+                    <Route path={"/products/beverage"} element={<ListProducts category={"beverage"} />}/>
+                    <Route path={"/products/beverage/create"}
                            element={<FormProduct id={"create-beverage"}
-                                                 category={"beverages"}
+                                                 category={"beverage"}
                                                  title={"Ajoutez une nouvelle boisson"}
                                                  subTitle={"Les boissons seront affichées dans la catégorie des produits correspondants"}
                                                  method={"POST"} />}/>
-                    <Route path={"/products/beverages/:idProduct"} element={<ShowProduct category={"beverages"}/>}/>
-                    <Route path={"/products/beverages/:idProduct/update"}
+                    <Route path={"/products/beverage/:idProduct"} element={<ShowProduct category={"beverage"}/>}/>
+                    <Route path={"/products/beverage/:idProduct/update"}
                            element={<FormProduct id={"update-beverage"}
-                                                 category={"beverages"}
+                                                 category={"beverage"}
                                                  title={"Modifiez une boisson"}
                                                  method={"PUT"}/>}/>
                 </Route>
@@ -107,6 +108,7 @@ function App() {
                            element={<FormCard id={"update-card"}
                                               title={"Modifier une carte"}
                                               method={"PUT"}/>} />
+                    <Route path={"/cards/:cardId/add-products"} element={<FormCardProducts />} />
                 </Route>
 
             </Routes>
