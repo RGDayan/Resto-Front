@@ -15,6 +15,44 @@ export default function ShowProduct({category}){
         getProduct(dispatch, category, idProduct)
     }, [dispatch, idProduct, category])
 
+    let productFields;
+
+    switch (category){
+        case "starter":
+            productFields = <div>
+                    <LabelInput name={"isHot"} label={"Entrée chaude"} />
+                    <p>{product.isHot? "Oui": "Non"}</p>
+                </div>
+            break;
+        case "dessert":
+            productFields = <>
+                <div>
+                    <LabelInput name={"isHot"} label={"Dessert chaud"} />
+                    <p>{product.isHot? "Oui": "Non"}</p>
+                </div>
+                <div>
+                    <LabelInput name={"isFlambe"} label={"Dessert flambé"} />
+                    <p>{product.isFlambe? "Oui": "Non"}</p>
+                </div>
+            </>
+            break;
+        case "beverage":
+            productFields = <>
+                <div>
+                    <LabelInput name={"degree"} label={"Degré d'alcool"} />
+                    <p>{product.degree}</p>
+                </div>
+                <div>
+                    <LabelInput name={"type"} label={"Type de boisson"} />
+                    <p>{product.type}</p>
+                </div>
+            </>
+            break;
+        default:
+            productFields = <></>
+            break;
+    }
+
     return (
         <div className={"p-3 w-1/2"}>
             <Title content={"Produit n°" + product.id + " : " + product.label} />
@@ -29,36 +67,7 @@ export default function ShowProduct({category}){
                     <p>{product.price}</p>
                 </div>
 
-                {
-                    category === "starter" ?
-                        <div>
-                            <LabelInput name={"isHot"} label={"Entrée chaude"} />
-                            <p>{product.isHot? "Oui": "Non"}</p>
-                        </div>
-                    :  category === "dessert" ?
-                        <>
-                            <div>
-                                <LabelInput name={"isHot"} label={"Dessert chaud"} />
-                                <p>{product.isHot? "Oui": "Non"}</p>
-                            </div>
-                            <div>
-                                <LabelInput name={"isFlambe"} label={"Dessert flambé"} />
-                                <p>{product.isFlambe? "Oui": "Non"}</p>
-                            </div>
-                        </>
-                    : category === "beverage" ?
-                        <>
-                            <div>
-                                <LabelInput name={"degree"} label={"Degré d'alcool"} />
-                                <p>{product.degree}</p>
-                            </div>
-                            <div>
-                                <LabelInput name={"type"} label={"Type de boisson"} />
-                                <p>{product.type}</p>
-                            </div>
-                        </>
-                        :""
-                }
+                { productFields }
             </div>
         </div>
     )

@@ -25,6 +25,44 @@ export default function FormProduct({id, category, title, subTitle, method}){
                 .then(async (res) => setTypeBeverages(await res.json()))
     }, [category]);
 
+    let productFields;
+    switch (category) {
+        case "starter":
+            productFields = <InputCheckbox label={"Entrée chaude"}
+                                           name={"isHot"}
+                                           value={product.isHot}
+                                           onChange={(e) => dispatch(setProductProperty(e))} />
+            break;
+        case "dessert":
+            productFields = <>
+                    <InputCheckbox label={"Dessert chaud"}
+                                   name={"isHot"}
+                                   value={product.isHot}
+                                   onChange={(e) => dispatch(setProductProperty(e))} />
+                    <InputCheckbox label={"Dessert flambé"}
+                                   name={"isFlambe"}
+                                   value={product.isFlambe}
+                                   onChange={(e) => dispatch(setProductProperty(e))} />
+                </>
+            break;
+        case "beverage":
+            productFields = <>
+                    <InputNumber label={"Degré d'alcool"}
+                                 name={"degree"}
+                                 value={product.degree}
+                                 onChange={(e) => dispatch(setProductProperty(e))} />
+                    <InputTextSelect label={"Type de boisson"}
+                                     name={"type"}
+                                     value={product.type}
+                                     values={typeBeverages}
+                                     onChange={(e) => dispatch(setProductProperty(e))} />
+                </>
+            break;
+        default:
+            productFields = <></>
+            break;
+    }
+
     function submitProduct(){
         if (product.label === "" ||
             product.description === "" ||
@@ -73,37 +111,7 @@ export default function FormProduct({id, category, title, subTitle, method}){
                          value={product.price}
                          onChange={(e) => dispatch(setProductProperty(e))} />
 
-            {
-                category === "starter" ?
-                    <InputCheckbox label={"Entrée chaude"}
-                                   name={"isHot"}
-                                   value={product.isHot}
-                                   onChange={(e) => dispatch(setProductProperty(e))} />
-                : category === "dessert" ?
-                    <>
-                        <InputCheckbox label={"Dessert chaud"}
-                                       name={"isHot"}
-                                       value={product.isHot}
-                                       onChange={(e) => dispatch(setProductProperty(e))} />
-                        <InputCheckbox label={"Dessert flambé"}
-                                       name={"isFlambe"}
-                                       value={product.isFlambe}
-                                       onChange={(e) => dispatch(setProductProperty(e))} />
-                    </>
-                : category === "beverage" ?
-                    <>
-                        <InputNumber label={"Degré d'alcool"}
-                                     name={"degree"}
-                                     value={product.degree}
-                                     onChange={(e) => dispatch(setProductProperty(e))} />
-                        <InputTextSelect label={"Type de boisson"}
-                                         name={"type"}
-                                         value={product.type}
-                                         values={typeBeverages}
-                                         onChange={(e) => dispatch(setProductProperty(e))} />
-                    </>
-                :""
-            }
+            {productFields}
 
             <NavigationButton id={"submit-" + category + "-product"}
                               content={"Valider"}
