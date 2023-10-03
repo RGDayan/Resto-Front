@@ -8,6 +8,7 @@ import HorizontalSeparator from "../divers/separators/horizontal_separator";
 import {Outlet, useNavigate} from "react-router-dom";
 import {resetCard} from "../../redux/reducers/cardReducer";
 import {getCards} from "../../query/cardQuery";
+import CardMenu from "./card_menu";
 
 export default function Cards(){
     const cards = useSelector(selectCards);
@@ -57,6 +58,8 @@ export default function Cards(){
 
             {/*CURRENT DISPLAY FOR CARDS (CREATION FORM, SHOW CARD...etc.)*/}
             <section className={"flex flex-col w-full"}>
+                <CardMenu />
+                <HorizontalSeparator horizontalMargin={"mr-5"} verticalMargin={""}/>
                 <Outlet />
             </section>
         </div>

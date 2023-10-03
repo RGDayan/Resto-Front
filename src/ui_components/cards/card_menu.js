@@ -12,6 +12,13 @@ export default function CardMenu(){
     return (
         // CURRENT CARD MENU
         <div className={"flex w-fit p-1"}>
+            <NavigationButton id={"show-card-button"}
+                              imgSrc={"visualize_bright"}
+                              imgFormat={16}
+                              alt={"show_ico"}
+                              className={"rounded-lg"}
+                              onClick={() => navigate("/cards/" + card.id )}/>
+
             <NavigationButton id={"update-card-button"}
                               imgSrc={"pen"}
                               imgFormat={16}

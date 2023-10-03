@@ -42,6 +42,11 @@ const {actions, reducer} = createSlice({
             draft.closingTime = "15:00"
             draft.services = null
             draft.products = null
+        },
+        addProduct: (draft, action) => {
+            const product = action.payload;
+            console.log(action.payload)
+            draft.products.push(product)
         }
     }
 })
@@ -49,6 +54,7 @@ const {actions, reducer} = createSlice({
 export const {
     setCard,
     setCardPropriete,
-    resetCard
+    resetCard,
+    addProduct
 } = actions
 export default reducer

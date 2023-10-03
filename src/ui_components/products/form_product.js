@@ -3,7 +3,7 @@ import Title from "../divers/labels/title";
 import {useDispatch, useSelector} from "react-redux";
 import {selectProduct} from "../../redux/selectors";
 import {resetProduct, setProductProperty} from "../../redux/reducers/productReducer";
-import {getProducts} from "../../query/productQuery";
+import {getProductsCategory} from "../../query/productQuery";
 import {useNavigate} from "react-router-dom";
 import InputText from "../divers/inputs/input_text";
 import InputNumber from "../divers/inputs/input_number";
@@ -85,7 +85,7 @@ export default function FormProduct({id, category, title, subTitle, method}){
             body: JSON.stringify(product)
         }).then(async (res) => {
             const resultat = await res.json()
-            getProducts(dispatch, category)
+            getProductsCategory(dispatch, category)
             dispatch(resetProduct())
             navigate("/products/" + category + "/" + resultat.id)
         })

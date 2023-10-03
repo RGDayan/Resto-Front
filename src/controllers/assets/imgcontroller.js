@@ -60,6 +60,9 @@ import home64 from "../../resources/home/home64.png";
 import visualize_dark16 from "../../resources/visualize/visualize_dark16.png";
 import visualize_dark32 from "../../resources/visualize/visualize_dark32.png";
 import visualize_dark64 from "../../resources/visualize/visualize_dark64.png";
+import visualize_bright16 from "../../resources/visualize/visualize_bright16.png";
+import visualize_bright32 from "../../resources/visualize/visualize_bright32.png";
+import visualize_bright64 from "../../resources/visualize/visualize_bright64.png";
 import starters16 from "../../resources/starters/starters16.png";
 import starters32 from "../../resources/starters/starters32.png";
 import starters64 from "../../resources/starters/starters64.png";
@@ -135,6 +138,9 @@ const images = {
     visualize_dark16,
     visualize_dark32,
     visualize_dark64,
+    visualize_bright16,
+    visualize_bright32,
+    visualize_bright64,
     starters16,
     starters32,
     starters64,
