@@ -5,6 +5,7 @@ import thunk from "redux-thunk";
 
 import cardReducer from "./reducers/cardReducer";
 import cardsReducer from "./reducers/cardsReducer";
+import commandReducer from "./reducers/commandReducer";
 import navigationReducer from "./reducers/navigationReducer";
 import productsReducer from "./reducers/productsReducer";
 import serviceReducer from "./reducers/serviceReducer";
@@ -18,6 +19,7 @@ const persistConfig = {
 const reducers = combineReducers({
     card: cardReducer,
     cards: cardsReducer,
+    command: commandReducer,
     navigation: navigationReducer,
     products: productsReducer,
     service: serviceReducer,

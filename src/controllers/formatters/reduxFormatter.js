@@ -22,15 +22,16 @@ export function preparePropertyAction(e, formatDecimals) {
 }
 
 
-function formatCurrency(value, decimals) {
+function formatCurrency(value, nbDecimals) {
     if (value[0] === "-")
         value = value.substring(1)
-    while (value[0] === "0")
+    while (value[0] === "0" && value[1] !== ".")
         value = value.substring(1)
 
-    if (value.split(".")[1] !== "" && value.split(".")[1] !== undefined)
-        if (value.split(".")[1].length > decimals)
-            value = value.split(".")[0] + "." + value.split(".")[1].substring(1, decimals + 1)
+    let decimals = value.split(".")[1]
+    if (decimals !== "" && decimals !== undefined)
+        if (decimals.length > nbDecimals)
+            value = value.split(".")[0] + "." + decimals.substring(1, nbDecimals + 1)
 
     return value
 }

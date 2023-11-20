@@ -3,7 +3,7 @@ import Title from "../labels/title";
 import NavigationButton from "../navigations/navigation_button";
 import HorizontalSeparator from "../separators/horizontal_separator";
 
-export default function Modal({isOpen, close, onConfirmation, id, title, content, imgSrc, imgAlt}){
+export default function Modal({isOpen, close, onConfirmation, id, title, content, imgSrc, imgAlt, children}){
 
     if (!isOpen)
         return
@@ -15,7 +15,7 @@ export default function Modal({isOpen, close, onConfirmation, id, title, content
             "h-screen w-full " +
             "bg-stone-500 bg-opacity-50"}>
 
-            <div className={"relative self-center h-fit w-fit p-6 px-10 bg-white rounded-lg space-y-3"}>
+            <div className={"relative mt-28 h-fit w-fit p-6 px-10 bg-white rounded-lg space-y-3"}>
                 <div className={" flex space-x-3"}>
                     {
                         imgSrc?
@@ -31,6 +31,7 @@ export default function Modal({isOpen, close, onConfirmation, id, title, content
                 </div>
                 <HorizontalSeparator horizontalMargin={""}/>
                 <p className={"mt-3"}>{content}</p>
+                {children}
                 <NavigationButton id={id + "-button"}
                                   content={"Confirmer"}
                                   onClick={() => {

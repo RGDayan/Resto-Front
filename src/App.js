@@ -13,6 +13,13 @@ import ListProducts from "./ui_components/products/list_products";
 import FormProduct from "./ui_components/products/form_product";
 import ShowProduct from "./ui_components/products/show_product";
 import FormCardProducts from "./ui_components/cards/relations/form_card_products";
+import NavigationCard from "./ui_components/cards/navigation_card";
+import FormService from "./ui_components/services/form_service";
+import Home from "./ui_components/home";
+import FormCommand from "./ui_components/commands/form_command";
+import ShowCommand from "./ui_components/commands/show_command";
+import CategorieProductsCommand from "./ui_components/commands/relations/categorie_products_command";
+import FormCommandProducts from "./ui_components/commands/relations/form_command_products";
 
 function App() {
     return (
@@ -20,9 +27,14 @@ function App() {
             <Settings />
             <HorizontalSeparator verticalMargin={""}/>
             <Routes >
-                <Route path={"/"} element={<Service />}/>
+                <Route path={"/"} element={<Home />}/>
                 <Route path={"/service"} element={<Service />}/>
-                <Route path={"/open-service"} element={"ouverture du service"}/>
+                <Route path={"/service/commands/create"} element={<FormCommand />} />
+                <Route path={"/service/commands/:idCommand"} element={<ShowCommand />} >
+                    <Route path={"/service/commands/:idCommand"} element={<CategorieProductsCommand />} />
+                    <Route path={"/service/commands/:idCommand/:category"} element={<FormCommandProducts />}/>
+                </Route>
+                <Route path={"/service/create"} element={<FormService />}/>
 
                 {/*STARTERS ROUTES*/}
                 <Route path={"/products"} element={<CategorieProducts />}/>
@@ -43,7 +55,6 @@ function App() {
                 </Route>
 
                 {/*DISHES ROUTES*/}
-                <Route path={"/products"} element={<CategorieProducts />}/>
                 <Route path={"/products/dish"} element={<Products category={"dish"}/>}>
                     <Route path={"/products/dish"} element={<ListProducts category={"dish"} />}/>
                     <Route path={"/products/dish/create"}
@@ -61,7 +72,6 @@ function App() {
                 </Route>
 
                 {/*DESSERTS ROUTES*/}
-                <Route path={"/products"} element={<CategorieProducts />}/>
                 <Route path={"/products/dessert"} element={<Products category={"dessert"}/>}>
                     <Route path={"/products/dessert"} element={<ListProducts category={"dessert"} />}/>
                     <Route path={"/products/dessert/create"}
@@ -79,7 +89,6 @@ function App() {
                 </Route>
 
                 {/*BEVERAGES ROUTES*/}
-                <Route path={"/products"} element={<CategorieProducts />}/>
                 <Route path={"/products/beverage"} element={<Products category={"beverage"}/>}>
                     <Route path={"/products/beverage"} element={<ListProducts category={"beverage"} />}/>
                     <Route path={"/products/beverage/create"}
@@ -103,12 +112,14 @@ function App() {
                                               title={"Créez une nouvelle carte"}
                                               subTitle={"Les cartes sont la représentation des produits servis pas service"}
                                               method={"POST"}/>} />
-                    <Route path={"/cards/:cardId"} element={<ShowCard />} />
-                    <Route path={"/cards/:cardId/update"}
-                           element={<FormCard id={"update-card"}
-                                              title={"Modifier une carte"}
-                                              method={"PUT"}/>} />
-                    <Route path={"/cards/:cardId/add-products"} element={<FormCardProducts />} />
+                    <Route path={"/cards/:cardId"} element={<NavigationCard />}>
+                        <Route path={"/cards/:cardId/show"} element={<ShowCard />} />
+                        <Route path={"/cards/:cardId/update"}
+                               element={<FormCard id={"update-card"}
+                                                  title={"Modifier une carte"}
+                                                  method={"PUT"}/>} />
+                        <Route path={"/cards/:cardId/add-products"} element={<FormCardProducts />} />
+                    </Route>
                 </Route>
 
             </Routes>

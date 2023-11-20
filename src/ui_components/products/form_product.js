@@ -2,8 +2,8 @@ import React, {useEffect, useState} from "react";
 import Title from "../divers/labels/title";
 import {useDispatch, useSelector} from "react-redux";
 import {selectProduct} from "../../redux/selectors";
-import {resetProduct, setProductProperty} from "../../redux/reducers/productReducer";
-import {getProductsCategory} from "../../query/productQuery";
+import {setProductProperty} from "../../redux/reducers/productReducer";
+import {createProduct} from "../../query/productQuery";
 import {useNavigate} from "react-router-dom";
 import InputText from "../divers/inputs/input_text";
 import InputNumber from "../divers/inputs/input_number";
@@ -11,6 +11,7 @@ import NavigationButton from "../divers/navigations/navigation_button";
 import Modal from "../divers/modals/modal";
 import InputCheckbox from "../divers/inputs/input_checkbox";
 import InputTextSelect from "../divers/inputs/input_text_select";
+import ContentWrapper from "../divers/wrappers/content_wrapper";
 
 export default function FormProduct({id, category, title, subTitle, method}){
     const product = useSelector(selectProduct)
@@ -78,22 +79,11 @@ export default function FormProduct({id, category, title, subTitle, method}){
             && product.type === "" )
             return;
 
-
-        fetch(process.env.REACT_APP_URL_API_RESTO + "/products/" + category, {
-            method: method,
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(product)
-        }).then(async (res) => {
-            const resultat = await res.json()
-            getProductsCategory(dispatch, category)
-            dispatch(resetProduct())
-            navigate("/products/" + category + "/" + resultat.id)
-        })
+        createProduct(dispatch, category, method, product, navigate)
     }
 
     return (
-        <div id={"form-" + id}
-             className={"flex flex-col w-1/2 space-y-3 px-3"} >
+        <ContentWrapper id={id} className={"flex flex-col space-y-3"} >
             <Title content={title}
                    subTitle={subTitle}
                    className={"w-fit"}/>
@@ -101,7 +91,8 @@ export default function FormProduct({id, category, title, subTitle, method}){
             <InputText label={"Nom du produit"}
                        name={"label"}
                        value={product.label}
-                       onChange={(e) => dispatch(setProductProperty(e))} />
+                       onChange={(e) => dispatch(setProductProperty(e))}
+                       autoFocus={true} />
             <InputText label={"Description"}
                        name={"description"}
                        value={product.description}
@@ -129,6 +120,6 @@ export default function FormProduct({id, category, title, subTitle, method}){
                    isOpen={isModalOpen}
                    close={() => setIsModalOpen(false)}
                    onConfirmation={() => submitProduct()}/>
-        </div>
+        </ContentWrapper>
     )
 }

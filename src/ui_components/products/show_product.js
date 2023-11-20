@@ -5,6 +5,7 @@ import {selectProduct} from "../../redux/selectors";
 import {getProduct} from "../../query/productQuery";
 import Title from "../divers/labels/title";
 import LabelInput from "../divers/labels/label_input";
+import ContentWrapper from "../divers/wrappers/content_wrapper";
 
 export default function ShowProduct({category}){
     const product = useSelector(selectProduct)
@@ -54,7 +55,7 @@ export default function ShowProduct({category}){
     }
 
     return (
-        <div className={"p-3 w-1/2"}>
+        <ContentWrapper>
             <Title content={"Produit n°" + product.id + " : " + product.label} />
 
             <div className={"space-y-3"}>
@@ -69,6 +70,6 @@ export default function ShowProduct({category}){
 
                 { productFields }
             </div>
-        </div>
+        </ContentWrapper>
     )
 }

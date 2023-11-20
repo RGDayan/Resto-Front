@@ -6,6 +6,7 @@ import {useParams} from "react-router-dom";
 import Title from "../divers/labels/title";
 import LabelInput from "../divers/labels/label_input";
 import ShowCardProducts from "./relations/show_card_products";
+import ContentWrapper from "../divers/wrappers/content_wrapper";
 
 export default function ShowCard(){
     const card = useSelector(selectCard)
@@ -17,28 +18,27 @@ export default function ShowCard(){
     }, [dispatch, cardId]);
 
     return (
-        <div className={"w-full"}>
-            <div className={"flex flex-col w-full"}>
-                <div className={"w-1/2 p-3 pr-10"}>
-                    <Title content={"Carte n°" + card.id + " : " + card.title}/>
-                    <div className="p-3 space-y-3">
-                        <div>
-                            <LabelInput name={"type"} label={"Type"} />
-                            <p>{card.type}</p>
-                        </div>
-                        <div>
-                            <LabelInput name={"openingTime"} label={"Heure d'ouverture"} />
-                            <p>{card?.openingTime?.substring(0, 5)}</p>
-                        </div>
-                        <div>
-                            <LabelInput name={"closingTime"} label={"Heure de fermeture"} />
-                            <p>{card?.closingTime?.substring(0, 5)}</p>
-                        </div>
+        <ContentWrapper>
+
+            <div>
+                <Title content={"Carte n°" + card.id + " : " + card.title}/>
+                <div className="p-3 space-y-3">
+                    <div>
+                        <LabelInput name={"type"} label={"Type"} />
+                        <p>{card.type}</p>
+                    </div>
+                    <div>
+                        <LabelInput name={"openingTime"} label={"Heure d'ouverture"} />
+                        <p>{card?.openingTime?.substring(0, 5)}</p>
+                    </div>
+                    <div>
+                        <LabelInput name={"closingTime"} label={"Heure de fermeture"} />
+                        <p>{card?.closingTime?.substring(0, 5)}</p>
                     </div>
                 </div>
-
-                <ShowCardProducts />
             </div>
-        </div>
+
+            <ShowCardProducts />
+        </ContentWrapper>
     )
 }

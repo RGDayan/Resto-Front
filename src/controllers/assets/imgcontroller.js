@@ -27,6 +27,9 @@ import plus_dark64 from "../../resources/plus/plus_dark64.png";
 import plus_bright16 from "../../resources/plus/plus_bright16.png";
 import plus_bright32 from "../../resources/plus/plus_bright32.png";
 import plus_bright64 from "../../resources/plus/plus_bright64.png";
+import plus_blue16 from "../../resources/plus/plus_blue16.png";
+import plus_blue32 from "../../resources/plus/plus_blue32.png";
+import plus_blue64 from "../../resources/plus/plus_blue64.png";
 import refresh16 from "../../resources/refresh/refresh16.png";
 import refresh32 from "../../resources/refresh/refresh32.png";
 import refresh64 from "../../resources/refresh/refresh64.png";
@@ -42,9 +45,12 @@ import back_arrow_bright16 from "../../resources/back_arrow/back_arrow_bright16.
 import back_arrow_dark64 from "../../resources/back_arrow/back_arrow_dark64.png";
 import back_arrow_dark32 from "../../resources/back_arrow/back_arrow_dark32.png";
 import back_arrow_dark16 from "../../resources/back_arrow/back_arrow_dark16.png";
-import forward_arrow64 from "../../resources/forward_arrow/forward_arrow64.png";
-import forward_arrow32 from "../../resources/forward_arrow/forward_arrow32.png";
-import forward_arrow16 from "../../resources/forward_arrow/forward_arrow16.png";
+import forward_arrow_dark64 from "../../resources/forward_arrow/forward_arrow_dark64.png";
+import forward_arrow_dark32 from "../../resources/forward_arrow/forward_arrow_dark32.png";
+import forward_arrow_dark16 from "../../resources/forward_arrow/forward_arrow_dark16.png";
+import forward_arrow_bright64 from "../../resources/forward_arrow/forward_arrow_bright64.png";
+import forward_arrow_bright32 from "../../resources/forward_arrow/forward_arrow_bright32.png";
+import forward_arrow_bright16 from "../../resources/forward_arrow/forward_arrow_bright16.png";
 import arrow_right64 from "../../resources/arrow-right/arrow_right64.png";
 import arrow_right32 from "../../resources/arrow-right/arrow_right32.png";
 import arrow_right16 from "../../resources/arrow-right/arrow_right16.png";
@@ -105,6 +111,9 @@ const images = {
     plus_bright16,
     plus_bright32,
     plus_bright64,
+    plus_blue16,
+    plus_blue32,
+    plus_blue64,
     refresh16,
     refresh32,
     refresh64,
@@ -120,9 +129,12 @@ const images = {
     back_arrow_bright64,
     back_arrow_bright32,
     back_arrow_bright16,
-    forward_arrow64,
-    forward_arrow32,
-    forward_arrow16,
+    forward_arrow_dark64,
+    forward_arrow_dark32,
+    forward_arrow_dark16,
+    forward_arrow_bright64,
+    forward_arrow_bright32,
+    forward_arrow_bright16,
     arrow_right64,
     arrow_right32,
     arrow_right16,

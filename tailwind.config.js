@@ -40,6 +40,8 @@ module.exports = {
         '48': '192px',
         '64': '256px',
         '96': '384px',
+        '128': '512px',
+        '150': '600px',
       },
       maxWidth: {
         '8': '32px',
@@ -49,6 +51,10 @@ module.exports = {
         '48': '192px',
         '64': '256px',
         '96': '384px',
+      },
+      maxHeight: {
+        '128': '512px',
+        '150': '600px',
       },
       keyframes: {
         rotate: {

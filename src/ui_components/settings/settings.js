@@ -15,6 +15,10 @@ export default function Settings(){
                 <NavigationButton imgSrc={"home"}
                                   imgFormat={16}
                                   className={"w-fit h-fit p-2 rounded-md m-1"}
+                                  onClick={() => navigate("/")}/>
+                <NavigationButton imgSrc={"dishes"}
+                                  imgFormat={16}
+                                  className={"w-fit h-fit p-2 rounded-md m-1"}
                                   onClick={() => navigate("/service")}/>
                 <NavigationButton imgSrc={"settings"}
                                   imgFormat={16}

@@ -1,5 +1,5 @@
 import {setProducts} from "../redux/reducers/productsReducer";
-import {setProduct} from "../redux/reducers/productReducer";
+import {resetProduct, setProduct} from "../redux/reducers/productReducer";
 
 export const getProducts = (dispatch) => {
     fetch(process.env.REACT_APP_URL_API_RESTO + "/products")
@@ -9,7 +9,7 @@ export const getProducts = (dispatch) => {
         })
 }
 
-export const getProductsCategory = (dispatch, category) => {
+export const getProductsByCategory = (dispatch, category) => {
     fetch(process.env.REACT_APP_URL_API_RESTO + "/products/" + category)
         .then(async (res) => {
             const results = await res.json()
@@ -25,8 +25,21 @@ export const getProduct = (dispatch, category, id) => {
         })
 }
 
+export const createProduct= (dispatch, category, method, product, navigate) => {
+    fetch(process.env.REACT_APP_URL_API_RESTO + "/products/" + category, {
+        method: method,
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(product)
+    }).then(async (res) => {
+        const resultat = await res.json()
+        getProductsByCategory(dispatch, category)
+        dispatch(resetProduct())
+        navigate("/products/" + category + "/" + resultat.id)
+    })
+}
+
 export const deleteProduct = (dispatch, category, id) => {
     fetch(process.env.REACT_APP_URL_API_RESTO + "/products/" + category + "/" + id, {
         method: "DELETE"
-    }).then(() => getProductsCategory(dispatch, category))
+    }).then(() => getProductsByCategory(dispatch, category))
 }

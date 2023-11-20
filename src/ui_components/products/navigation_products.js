@@ -24,7 +24,7 @@ export default function NavigationProducts({category, onPlusClick}){
             <NavigationButton id={"retour-button"}
                               imgSrc={"back_arrow_bright"}
                               imgFormat={16}
-                              onClick={() => navigate("/products" + (idProduct === undefined? "": "/" + category))}
+                              onClick={() => navigate(-1)}
                               className={"rounded-lg"}  />
             <NavigationButton id={"create-" + category + "-button"}
                               imgSrc={"plus_bright"}

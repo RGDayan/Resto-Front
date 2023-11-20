@@ -1,7 +1,7 @@
 import React from "react";
 import LabelInput from "../labels/label_input";
 
-export default function InputNumber({name, label, value, onChange, className = ""}){
+export default function InputNumber({name, label, value, onChange, className = "", autoFocus = false}){
 
     return (
         <div className={"flex flex-col"}>
@@ -10,7 +10,8 @@ export default function InputNumber({name, label, value, onChange, className = "
                    type={"number"}
                    value={value}
                    className={"pl-1 bg-stone-200 outline-none " + className}
-                   onChange={onChange}/>
+                   onChange={onChange}
+                   autoFocus={autoFocus}/>
         </div>
     )
 }

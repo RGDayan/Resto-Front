@@ -1,28 +1,73 @@
 import {createSlice} from "@reduxjs/toolkit";
+import dateFormat from "dateformat";
+import {preparePropertyAction} from "../../controllers/formatters/reduxFormatter";
 
 const initialState = {
     id: 0,
-    date_ouverture: null,
-    date_fermeture: null,
-    chiffre_affaires: 0,
-    nb_commandes: 0,
-    status: null
+    openedDate: dateFormat(new Date(Date.now()), "yyyy-mm-dd HH:MM"),
+    closedDate: "",
+    plannedClosedDate: "",
+    status: true,
+    card: null,
+    commands: null,
+    message: ""
 }
 
 const {actions, reducer} = createSlice({
     name: "service",
     initialState,
     reducers: {
+        resetService: (draft) => {
+            draft.id = 0
+            draft.openedDate = dateFormat(new Date(Date.now()), "yyyy-mm-dd HH:MM")
+            draft.plannedClosedDate = ""
+            draft.closedDate = ""
+            draft.status = true
+            draft.card = null
+            draft.commands = null
+            draft.message = ""
+        },
         setService: (draft, action) => {
-            draft.id = action.payload.id
-            draft.date_ouverture = action.payload.date_ouverture
-            draft.date_fermeture = action.payload.date_fermeture
-            draft.chiffre_affaires = action.payload.chiffre_affaires
-            draft.nb_commandes = action.payload.nb_commandes
-            draft.status = action.payload.status
+            const payload = action.payload
+            draft.id = payload.id
+            draft.openedDate = payload.openedDate
+            draft.closedDate = payload.closedDate
+            draft.plannedClosedDate = payload.plannedClosedDate
+            draft.status = payload.status
+            draft.card = payload.card
+            draft.commands = payload.commands?.sort((a, b) => (a.numTable > b.numTable) ? 1: -1)
+            draft.message = payload.message
+        },
+        setServiceProperty: {
+            prepare: (e) => ({
+                payload: preparePropertyAction(e)
+            }),
+            reducer: (draft, action) => {
+                if (action.payload.value !== draft[action.payload.name])
+                    draft[action.payload.name] = action.payload.value
+            }
+        },
+        addServiceCard: (draft, action) => {
+            draft.card = action.payload
+            let openingTime = draft.card.openingTime
+            let closingTime = draft.card.closingTime
+
+            draft.openedDate =  dateFormat(new Date(Date.now()), "yyyy-mm-dd") + "T" + openingTime
+
+            if (openingTime > closingTime){
+                let dateNow = new Date(Date.now())
+                dateNow.setDate(dateNow.getDate() + 1)
+                draft.plannedClosedDate = dateFormat(dateNow, "yyyy-mm-dd") + "T" + closingTime
+            }else {
+                draft.plannedClosedDate = dateFormat(new Date(Date.now()), "yyyy-mm-dd") + "T" + closingTime
+            }
         }
     }
 })
 
-export const { setService } = actions;
+export const {
+    resetService,
+    setService,
+    setServiceProperty,
+    addServiceCard} = actions;
 export default reducer;

@@ -15,6 +15,15 @@ const {actions, reducer} = createSlice({
     name: "card",
     initialState,
     reducers: {
+        resetCard: (draft) => {
+            draft.id = null
+            draft.title = ""
+            draft.type = ""
+            draft.openingTime = "11:00"
+            draft.closingTime = "15:00"
+            draft.services = null
+            draft.products = null
+        },
         setCard: (draft, action) => {
             const payload = action.payload
             draft.id = payload.id
@@ -25,7 +34,7 @@ const {actions, reducer} = createSlice({
             draft.services = payload.services
             draft.products = payload.products
         },
-        setCardPropriete: {
+        setCardProperty: {
             prepare: (e) => ({
                 payload: preparePropertyAction(e)
             }),
@@ -33,28 +42,13 @@ const {actions, reducer} = createSlice({
                 if (action.payload.value !== draft[action.payload.name])
                     draft[action.payload.name] = action.payload.value
             }
-        },
-        resetCard: (draft) => {
-            draft.id = null
-            draft.title = ""
-            draft.type = ""
-            draft.openingTime = "11:00"
-            draft.closingTime = "15:00"
-            draft.services = null
-            draft.products = null
-        },
-        addProduct: (draft, action) => {
-            const product = action.payload;
-            console.log(action.payload)
-            draft.products.push(product)
         }
     }
 })
 
 export const {
     setCard,
-    setCardPropriete,
-    resetCard,
-    addProduct
+    setCardProperty,
+    resetCard
 } = actions
 export default reducer

@@ -3,7 +3,7 @@ import Title from "../divers/labels/title";
 import InputText from "../divers/inputs/input_text";
 import {useDispatch, useSelector} from "react-redux";
 import {selectCard} from "../../redux/selectors";
-import {resetCard, setCardPropriete} from "../../redux/reducers/cardReducer";
+import {resetCard, setCardProperty} from "../../redux/reducers/cardReducer";
 import {useQuery} from "react-query";
 import InputTextSelect from "../divers/inputs/input_text_select";
 import NavigationButton from "../divers/navigations/navigation_button";
@@ -11,6 +11,7 @@ import {useNavigate} from "react-router-dom";
 import {getCards} from "../../query/cardQuery";
 import Modal from "../divers/modals/modal";
 import InputTime from "../divers/inputs/input_time";
+import ContentWrapper from "../divers/wrappers/content_wrapper";
 
 export default function FormCard({id, title, subTitle = "", method}){
     const card = useSelector(selectCard)
@@ -45,53 +46,53 @@ export default function FormCard({id, title, subTitle = "", method}){
             const resultat = await res.json()
             getCards(dispatch)
             dispatch(resetCard())
-            navigate("/cards/" + resultat.id)
+            navigate("/cards/" + resultat.id + "/show")
         })
     }
 
     return (
-        <div className={"w-fit p-3"}>
+        <ContentWrapper className={"space-y-3"}>
             <Title content={title}
                    subTitle={subTitle}/>
-            <form id={"form-" + id}
-                  className={"flex flex-col pt-3"} >
-                <InputText name={"title"}
-                           label={"Titre"}
-                           value={card.title}
-                           onChange={(e) => dispatch(setCardPropriete(e))}/>
-                <InputTextSelect name={"type"}
-                                 label={"Type"}
-                                 value={card.type}
-                                 values={types}
-                                 onChange={(e) => dispatch(setCardPropriete(e))}
-                                 className={"mb-3"}/>
-                <InputTime name={"openingTime"}
-                           label={"Heure d'ouverture prévue"}
-                           value={card.openingTime}
-                           onChange={(e) => {dispatch(setCardPropriete(e))}}/>
-                <div className="m-2"></div>
-                <InputTime name={"closingTime"}
-                           label={"Heure de fermeture prévue"}
-                           value={card.closingTime}
-                           onChange={(e) => {dispatch(setCardPropriete(e))}}/>
+            <InputText name={"title"}
+                       label={"Titre"}
+                       value={card.title}
+                       onChange={(e) => dispatch(setCardProperty(e))}
+                       autoFocus={true}/>
+            <InputTextSelect name={"type"}
+                             label={"Type"}
+                             value={card.type}
+                             values={types}
+                             onChange={(e) => dispatch(setCardProperty(e))}
+                             className={"mb-3"}/>
+            <InputTime name={"openingTime"}
+                       label={"Heure d'ouverture prévue"}
+                       value={card.openingTime}
+                       onChange={(e) => {dispatch(setCardProperty(e))}}/>
+            <InputTime name={"closingTime"}
+                       label={"Heure de fermeture prévue"}
+                       className={"mt-2"}
+                       value={card.closingTime}
+                       onChange={(e) => {dispatch(setCardProperty(e))}}/>
 
+            <div className="flex justify-center w-full mt-3">
                 <NavigationButton id={"submit-" + id + "-card"}
                                   content={"Valider"}
-                                  className={"mt-3 w-fit p-3 bg-stone-200 hover:bg-stone-300 active:bg-stone-500 rounded-lg"}
+                                  className={"mt-3 w-fit p-3 bg-stone-100 rounded-md"}
                                   onClick={() => {
                                       if (method === "POST")
                                           submitCard()
                                       else if (method === "PUT")
                                           setIsModalOpen(true)
                                   }}/>
+            </div>
 
-                <Modal id={"update-card"}
-                       title={"Modification d'une carte"}
-                       content={"Souhaitez-vous valider la modification de la carte n°" + card.id + " : " + card.title}
-                       isOpen={isModalOpen}
-                       close={() => setIsModalOpen(false)}
-                       onConfirmation={() => submitCard()}/>
-            </form>
-        </div>
+            <Modal id={"update-card"}
+                   title={"Modification d'une carte"}
+                   content={"Souhaitez-vous valider la modification de la carte n°" + card.id + " : " + card.title}
+                   isOpen={isModalOpen}
+                   close={() => setIsModalOpen(false)}
+                   onConfirmation={() => submitCard()}/>
+        </ContentWrapper>
     )
 }
