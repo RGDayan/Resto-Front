@@ -9,7 +9,7 @@ const initialState = {
     status: false,
     createdAt: null,
     service: null,
-    products: []
+    commandProducts: []
 }
 
 const {actions, reducer} = createSlice({
@@ -23,8 +23,8 @@ const {actions, reducer} = createSlice({
             draft.customerCount = ""
             draft.status = false
             draft.createdAt = null
-            draft.service = null
-            draft.products = []
+            draft.service = {}
+            draft.commandProducts = []
         },
         setCommand: (draft, action) => {
             const payload = action.payload
@@ -35,7 +35,7 @@ const {actions, reducer} = createSlice({
             draft.status = payload.status
             draft.createdAt = payload.createdAt
             draft.service = payload.service
-            draft.products = payload.products
+            draft.commandProducts = payload.commandProducts
         },
         setCommandProperty: {
             prepare: (e) => ({

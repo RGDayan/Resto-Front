@@ -45,16 +45,10 @@ const {actions, reducer} = createSlice({
         },
         setProductProperty: {
             prepare: (e) => ({
-                payload: preparePropertyAction(e, 2)
+                payload: preparePropertyAction(e)
             }),
             reducer: (draft, action) => {
-                const name = action.payload.name
-                const value = action.payload.value
-
-                if (value === "" && !draft[name].toString().includes("."))
-                    draft[name] = draft[name] + ".00"
-                else if (value !== draft[name])
-                    draft[name] = value
+                draft[action.payload.name] = action.payload.value
             }
         },
     }

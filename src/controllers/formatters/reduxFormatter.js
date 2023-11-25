@@ -1,4 +1,4 @@
-export function preparePropertyAction(e, formatDecimals) {
+export function preparePropertyAction(e) {
     let payload = {}
 
     payload.name = e.target.name
@@ -11,7 +11,7 @@ export function preparePropertyAction(e, formatDecimals) {
             payload.value = e.target.checked
             break;
         case "number":
-            payload.value = formatCurrency(e.target.value, formatDecimals)
+            payload.value = formatCurrency(e.target.value)
             break;
         default:
             payload.value = e.target.value
@@ -22,16 +22,10 @@ export function preparePropertyAction(e, formatDecimals) {
 }
 
 
-function formatCurrency(value, nbDecimals) {
-    if (value[0] === "-")
+function formatCurrency(value) {
+    value = value.replace('-', '')
+    if (value[0] === 0 && value[1] !== 0)
         value = value.substring(1)
-    while (value[0] === "0" && value[1] !== ".")
-        value = value.substring(1)
-
-    let decimals = value.split(".")[1]
-    if (decimals !== "" && decimals !== undefined)
-        if (decimals.length > nbDecimals)
-            value = value.split(".")[0] + "." + decimals.substring(1, nbDecimals + 1)
 
     return value
 }

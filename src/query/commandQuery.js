@@ -20,12 +20,13 @@ export const createCommand = (dispatch, navigate, command) => {
 }
 
 export const addCommandProduct = (dispatch, command, product) => {
-    fetch(process.env.REACT_APP_URL_API_RESTO + "/commands/" + command.id + "/products/", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(product)
-    }).then(async (res) => {
-        const resultat = await res.json()
-        dispatch(setCommand(resultat))
-    })
+    fetch(process.env.REACT_APP_URL_API_RESTO + "/commands/" + command.id + "/products/" + product.id, {
+        method: "POST"
+    }).then(() => getCommand(dispatch, command.id))
+}
+
+export const reduceCommandProduct = (dispatch, command, product) => {
+    fetch(process.env.REACT_APP_URL_API_RESTO + "/commands/" + command.id + "/products/" + product.id, {
+        method: "PUT"
+    }).then(() => getCommand(dispatch, command.id))
 }

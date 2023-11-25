@@ -21,6 +21,9 @@ import user16 from "../../resources/user/user16.png";
 import user32 from "../../resources/user/user32.png";
 import user64 from "../../resources/user/user64.png";
 import user96 from "../../resources/user/user96.png";
+import minus_blue16 from "../../resources/minus/minus_blue16.png";
+import minus_blue32 from "../../resources/minus/minus_blue32.png";
+import minus_blue64 from "../../resources/minus/minus_blue64.png";
 import plus_dark16 from "../../resources/plus/plus_dark16.png";
 import plus_dark32 from "../../resources/plus/plus_dark32.png";
 import plus_dark64 from "../../resources/plus/plus_dark64.png";
@@ -105,6 +108,9 @@ const images = {
     user32,
     user64,
     user96,
+    minus_blue16,
+    minus_blue32,
+    minus_blue64,
     plus_dark16,
     plus_dark32,
     plus_dark64,

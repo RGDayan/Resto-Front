@@ -15,14 +15,14 @@ export default function FormCommandProducts(){
     const card = useSelector(selectServiceCard)
     const dispatch = useDispatch()
     const { category } = useParams()
-    const [displayDescription, setDisplayDescription] = useState(false);
+    const [displayDescription, setDisplayDescription] = useState(true);
 
     useEffect(() => {
         getCardProductsByCategorie(dispatch, card.id,  category)
-    }, [dispatch, category]);
+    }, [dispatch, category, card.id]);
 
     return (
-        <ContentWrapper className={"w-full h-full pt-5"} >
+        <ContentWrapper className={"grid grid-cols-3 space-y-3 w-full max-h-full pt-10"} >
             <InputToggle checked={false}
                          label={"Afficher les descriptions"}
                          className={"absolute top-0 right-0 m-2"}
