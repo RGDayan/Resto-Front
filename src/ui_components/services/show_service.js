@@ -10,7 +10,7 @@ export default function ShowService(){
     let totalAmount = 0
     let totalCustomers = 0
     let averageTicket
-    if (service.commands !== null && service.status.toString().substring(0, 1) !== "4") {
+    if (service.commands !== null && service.status?.toString().substring(0, 1) !== "4") {
         if (service.commands?.length === 1) {
             totalAmount = service.commands[0].amount
             totalCustomers = service.commands[0].customerCount

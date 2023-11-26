@@ -11,11 +11,17 @@ export const createCommand = (dispatch, navigate, command) => {
     fetch(process.env.REACT_APP_URL_API_RESTO + "/commands", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(command)
+        body: JSON.stringify({
+            ...command,
+            service: {
+                id: command.service.id
+            }
+        })
     }).then(async (res) => {
         const resultat = await res.json()
         dispatch(setCommand(resultat))
         navigate("/service/commands/" + resultat.id)
+        getCommand(dispatch, resultat.id)
     })
 }
 

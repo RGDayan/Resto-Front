@@ -37,7 +37,7 @@ export default function FormCommandProducts(){
                         return <NavigationButton key={"product-" + product.id}
                                                  id={"product-" + product.id}
                                                  content={product.label}
-                                                 className={"flex-col p-2 h-fit w-48 rounded-md bg-stone-100"}
+                                                 className={"flex-col p-2 h-fit w-11/12 rounded-md bg-stone-100"}
                                                  contentClassName={"font-semibold text-lg"}
                                                  onClick={() => addCommandProduct(dispatch, command, product)}>
                             {

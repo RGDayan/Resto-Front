@@ -22,7 +22,10 @@ export const createService = (dispatch, service) => {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
             ...service,
-            openedDate: service.openedDate.replace(" " , "T")
+            openedDate: service.openedDate.replace(" " , "T"),
+            card: {
+                id: service.card.id
+            }
         })
     }).then(async () => {
         getCurrentService(dispatch)
