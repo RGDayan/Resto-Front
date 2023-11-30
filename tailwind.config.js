@@ -9,6 +9,8 @@ module.exports = {
         "hover" : '#3D3D3D',
         "select" : '#272727',
         "darkgray" : {
+          100 : '#F1F1F1',
+          200 : '#BFBFBF',
           300 : '#AAAAAA',
           400 : '#717171',
           500 : '#3F3F3F', // bordures

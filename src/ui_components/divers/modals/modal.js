@@ -3,8 +3,7 @@ import Title from "../labels/title";
 import NavigationButton from "../navigations/navigation_button";
 import HorizontalSeparator from "../separators/horizontal_separator";
 
-export default function Modal({isOpen, close, onConfirmation, id, title, content, imgSrc, imgAlt, children}){
-
+export default function Modal({isOpen, close, onConfirmation = () => {}, id, title, content, imgSrc, imgAlt = "", children}){
     if (!isOpen)
         return
 

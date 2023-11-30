@@ -1,4 +1,5 @@
 import {setCommand} from "../redux/reducers/commandReducer";
+import {setService} from "../redux/reducers/serviceReducer";
 
 export const getCommand = (dispatch, id) => {
     fetch(process.env.REACT_APP_URL_API_RESTO + "/commands/" + id)
@@ -35,4 +36,19 @@ export const reduceCommandProduct = (dispatch, command, product) => {
     fetch(process.env.REACT_APP_URL_API_RESTO + "/commands/" + command.id + "/products/" + product.id, {
         method: "PUT"
     }).then(() => getCommand(dispatch, command.id))
+}
+
+export const askCommandProduct = (dispatch, command, category) => {
+    fetch(process.env.REACT_APP_URL_API_RESTO + "/commands/" + command.id + "/" + category, {
+        method: "PUT"
+    }).then(() => getCommand(dispatch, command.id))
+}
+
+export const closeCommand = (dispatch, command) => {
+    fetch(process.env.REACT_APP_URL_API_RESTO + "/commands/" + command.id + "/pay", {
+        method: "DELETE"
+    }).then(async (res) => {
+        const resultat = await res.json()
+        dispatch(setService(resultat))
+    })
 }

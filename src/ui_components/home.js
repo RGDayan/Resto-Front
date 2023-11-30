@@ -45,7 +45,7 @@ export default function Home(){
                                     <td>N°</td>
                                     <td>Table</td>
                                     <td>Nb clients</td>
-                                    <td>€</td>
+                                    <td>Prix</td>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -56,7 +56,7 @@ export default function Home(){
                                                 <td>{command.id}</td>
                                                 <td>{command.numTable}</td>
                                                 <td>{command.customerCount}</td>
-                                                <td>{command.amount}</td>
+                                                <td>{command.priceTTC}</td>
                                             </tr>
                                         )
                                     })

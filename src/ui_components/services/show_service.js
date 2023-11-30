@@ -11,13 +11,8 @@ export default function ShowService(){
     let totalCustomers = 0
     let averageTicket
     if (service.commands !== null && service.status?.toString().substring(0, 1) !== "4") {
-        if (service.commands?.length === 1) {
-            totalAmount = service.commands[0].amount
-            totalCustomers = service.commands[0].customerCount
-        }
-        else if (service.commands?.length !== 0) {
-            totalAmount = service.commands?.reduce((a, b) => a + b.amount, 0);
-            console.log(totalAmount)
+        if (service.commands?.length !== 0) {
+            totalAmount = service.commands?.reduce((a, b) => a + b.priceTTC, 0);
             totalCustomers = service.commands?.reduce((a, b) => a + b.customerCount, 0)
         }
         if (totalCustomers !== 0)

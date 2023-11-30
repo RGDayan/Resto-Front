@@ -5,7 +5,10 @@ const initialState = {
     id: null,
     label: "",
     description: "",
-    price: "",
+    priceHT: "",
+    ratingTVA: null,
+    partTVA: "",
+    priceTTC: "",
     isHot: false,
     isFlambe: false,
     degree: "",
@@ -22,7 +25,13 @@ const {actions, reducer} = createSlice({
             draft.id = null
             draft.label = ""
             draft.description = ""
-            draft.price = ""
+            draft.priceHT = ""
+            draft.ratingTVA = {
+                id: null,
+                rating: null,
+            }
+            draft.partTVA = ""
+            draft.priceTTC = ""
             draft.isHot = false
             draft.isFlambe = false
             draft.degree = ""
@@ -35,7 +44,10 @@ const {actions, reducer} = createSlice({
             draft.id = payload.id
             draft.label = payload.label
             draft.description = payload.description
-            draft.price = payload.price
+            draft.priceHT = payload.priceHT
+            draft.ratingTVA = payload.ratingTVA
+            draft.partTVA = payload.partTVA
+            draft.priceTTC = payload.priceTTC
             draft.isHot = payload.isHot
             draft.isFlambe = payload.isFlambe
             draft.degree = payload.degree
@@ -51,6 +63,16 @@ const {actions, reducer} = createSlice({
                 draft[action.payload.name] = action.payload.value
             }
         },
+        setProductRatingTVA: (draft, action) => {
+            const target = action.payload.nativeEvent.target
+            draft.ratingTVA = {
+                id: action.payload.target.value,
+                rating : target[target.selectedIndex].text.replace(" %", "")
+            }
+        },
+        setProductRatingTVARaw: (draft, action) => {
+            draft.ratingTVA = action.payload
+        }
     }
 })
 
@@ -58,5 +80,7 @@ export const {
     resetProduct,
     setProduct,
     setProductProperty,
+    setProductRatingTVA,
+    setProductRatingTVARaw,
 } = actions
 export default reducer

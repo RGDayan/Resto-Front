@@ -63,12 +63,27 @@ export default function ShowProduct({category}){
                     <LabelInput name={"description"} label={"Description"} />
                     <p>{product.description}</p>
                 </div>
-                <div>
-                    <LabelInput name={"price"} label={"Prix"} />
-                    <p>{product.price}</p>
+                { productFields }
+
+                <div className="flex w-full space-x-3">
+                    <div>
+                        <LabelInput name={"priceHT"} label={"Prix HT"} />
+                        <p>{product.priceHT} €</p>
+                    </div>
+                    <div>
+                        <LabelInput name={"ratingTVA"} label={"Taux de TVA"} />
+                        <p>{product.ratingTVA.rating} %</p>
+                    </div>
+                    <div>
+                        <LabelInput name={"partTVA"} label={"Part de TVA"} />
+                        <p>{product.partTVA} €</p>
+                    </div>
+                    <div>
+                        <LabelInput name={"priceTTC"} label={"Prix TTC"} />
+                        <p>{product.priceTTC} €</p>
+                    </div>
                 </div>
 
-                { productFields }
             </div>
         </ContentWrapper>
     )

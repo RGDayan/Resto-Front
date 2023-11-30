@@ -21,7 +21,10 @@ export default function ShowCardProducts({isTitleVisible = true}){
                     <tr>
                         <td>Id</td>
                         <td>Label</td>
-                        <td>Prix</td>
+                        <td>Prix HT</td>
+                        <td>Taux TVA</td>
+                        <td>Part TVA</td>
+                        <td>Prix TTC</td>
                     </tr>
                 </thead>
                 <tbody className={"overflow-y-auto"}>
@@ -30,7 +33,10 @@ export default function ShowCardProducts({isTitleVisible = true}){
                             return <tr key={"card-product-" + product.id}>
                                 <td>{product.id}</td>
                                 <td>{product.label}</td>
-                                <td>{product.price}</td>
+                                <td>{product.priceHT} €</td>
+                                <td>{product.ratingTVA.rating} %</td>
+                                <td>{product.partTVA} €</td>
+                                <td className={"font-bold"}>{product.priceTTC} €</td>
                             </tr>
                         })
                     }

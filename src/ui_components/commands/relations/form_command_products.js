@@ -44,7 +44,7 @@ export default function FormCommandProducts(){
                                 !displayDescription &&
                                 <p className={"text-sm"}>{product.description}</p>
                             }
-                            <p>{product.price} €</p>
+                            <p>{product.priceTTC} €</p>
                         </NavigationButton>
                     })
             }

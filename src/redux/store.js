@@ -7,9 +7,10 @@ import cardReducer from "./reducers/cardReducer";
 import cardsReducer from "./reducers/cardsReducer";
 import commandReducer from "./reducers/commandReducer";
 import navigationReducer from "./reducers/navigationReducer";
-import productsReducer from "./reducers/productsReducer";
-import serviceReducer from "./reducers/serviceReducer";
 import productReducer from "./reducers/productReducer";
+import productsReducer from "./reducers/productsReducer";
+import ratingsTVAReducer from "./reducers/ratingsTVAReducer";
+import serviceReducer from "./reducers/serviceReducer";
 
 const persistConfig = {
     key : 'root',
@@ -21,9 +22,10 @@ const reducers = combineReducers({
     cards: cardsReducer,
     command: commandReducer,
     navigation: navigationReducer,
-    products: productsReducer,
-    service: serviceReducer,
     product: productReducer,
+    products: productsReducer,
+    ratingsTVA: ratingsTVAReducer,
+    service: serviceReducer,
 })
 
 const persistedReducers = persistReducer(persistConfig, reducers)

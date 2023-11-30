@@ -3,10 +3,12 @@ import {preparePropertyAction} from "../../controllers/formatters/reduxFormatter
 
 const initialState = {
     id: 0,
-    amount: null,
+    priceHT: null,
+    priceTTC: null,
     numTable: "",
     customerCount: "",
     status: false,
+    closingReason: "",
     createdAt: null,
     service: null,
     commandProducts: []
@@ -18,10 +20,12 @@ const {actions, reducer} = createSlice({
     reducers: {
         resetCommand: (draft) => {
             draft.id = 0
-            draft.amount = 0
+            draft.priceHT = 0
+            draft.priceTTC = 0
             draft.numTable = ""
             draft.customerCount = ""
             draft.status = false
+            draft.closingReason = ""
             draft.createdAt = null
             draft.service = {}
             draft.commandProducts = []
@@ -29,10 +33,12 @@ const {actions, reducer} = createSlice({
         setCommand: (draft, action) => {
             const payload = action.payload
             draft.id = payload.id
-            draft.amount = payload.amount
+            draft.priceHT = payload.priceHT
+            draft.priceTTC = payload.priceTTC
             draft.numTable = payload.numTable
             draft.customerCount = payload.customerCount
             draft.status = payload.status
+            draft.closingReason = payload.closingReason
             draft.createdAt = payload.createdAt
             draft.service = payload.service
             draft.commandProducts = payload.commandProducts

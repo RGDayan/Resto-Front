@@ -1,13 +1,13 @@
 import React from "react";
 import HorizontalSeparator from "../separators/horizontal_separator";
 
-export default function Title({content, subTitle="", className, underline = true}){
+export default function Title({content, subTitle="", className, underline = true, separatorMargin = "-mr-6"}){
     return (
         <div className={className}>
             <h1 className={"text-lg font-semibold"}>{content}</h1>
             {
                 underline?
-                    <HorizontalSeparator verticalMargin={""} horizontalMargin={"-mr-6"}/>
+                    <HorizontalSeparator verticalMargin={""} horizontalMargin={separatorMargin}/>
                     :<></>
             }
             {

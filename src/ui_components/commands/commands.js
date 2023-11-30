@@ -41,7 +41,7 @@ export default function Commands(){
                             <p>Entrée non commandée</p>
                         </NavigationButton>
                     })
-                    : <LabelErreur error={"INFO : Aucune commande n'a été passée"}
+                    : <LabelErreur error={"INFO : Aucune commande en cours"}
                                    errorClassName={"text-center"}
                                    className={"mx-2"}/>
             }
